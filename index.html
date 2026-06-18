@@ -37,8 +37,10 @@
       --font:        'Inter', sans-serif;
       --mono:        'JetBrains Mono', monospace;
       --ease:        cubic-bezier(0.23, 1, 0.32, 1);
+      --ease-spring: cubic-bezier(0.34, 1.56, 0.64, 1);
       --ease-in-out: cubic-bezier(0.77, 0, 0.175, 1);
       --ease-drawer: cubic-bezier(0.32, 0.72, 0, 1);
+      --ease-out-expo: cubic-bezier(0.16, 1, 0.3, 1);
       --t:           .25s;
       --t-slow:      .4s;
     }
@@ -312,17 +314,39 @@
       opacity: .18;
     }
 
-    /* reveal — scale + translate, never from nothing */
+    /* reveal — blur + scale + translate for impeccable depth */
     .reveal {
       opacity: 0;
-      transform: translateY(20px) scale(0.97);
-      transition: opacity .55s var(--ease), transform .55s var(--ease);
+      transform: translateY(24px) scale(0.97);
+      filter: blur(4px);
+      transition: opacity .6s var(--ease-out-expo),
+                  transform .6s var(--ease-out-expo),
+                  filter .5s var(--ease-out-expo);
+      will-change: opacity, transform, filter;
     }
-    .reveal.visible { opacity: 1; transform: translateY(0) scale(1); }
-    .reveal-delay-1 { transition-delay: .06s; }
-    .reveal-delay-2 { transition-delay: .12s; }
-    .reveal-delay-3 { transition-delay: .18s; }
-    .reveal-delay-4 { transition-delay: .24s; }
+    .reveal.visible {
+      opacity: 1;
+      transform: translateY(0) scale(1);
+      filter: blur(0px);
+    }
+    .reveal-delay-1 { transition-delay: .07s; }
+    .reveal-delay-2 { transition-delay: .14s; }
+    .reveal-delay-3 { transition-delay: .21s; }
+    .reveal-delay-4 { transition-delay: .28s; }
+
+    /* timeline draw — line grows from top */
+    .timeline-line {
+      transform-origin: top;
+      animation: none;
+    }
+    .timeline-line.drawn { animation: drawLine .8s var(--ease-out-expo) forwards; }
+    @keyframes drawLine {
+      from { transform: scaleY(0); }
+      to   { transform: scaleY(1); }
+    }
+
+    /* magnetic card glow */
+    .mag-card { transition: transform .35s var(--ease-spring), box-shadow .35s var(--ease); }
 
     /* ─── Profile Photo ──────────────────────────────────── */
     .profile-photo-wrap {
@@ -2151,6 +2175,103 @@ navMenu.querySelectorAll('a').forEach(a=>{
     hamburger.classList.remove('open');
   });
 });
+
+/* ── Impeccable Motion: Parallax hero ───────────────────── */
+(function(){
+  const hero = document.getElementById('hero');
+  if(!hero) return;
+  window.addEventListener('scroll', ()=>{
+    const y = window.scrollY;
+    if(y > window.innerHeight) return;
+    const canvas = document.getElementById('canvas-bg');
+    if(canvas) canvas.style.transform = `translateY(${y * 0.18}px)`;
+    hero.style.setProperty('--parallax-y', `${y * 0.08}px`);
+  }, {passive: true});
+  hero.style.willChange = 'transform';
+})();
+
+/* ── Impeccable Motion: Magnetic cursor on cards ─────────── */
+(function(){
+  if(!window.matchMedia('(hover: hover) and (pointer: fine)').matches) return;
+  const STRENGTH = 14;
+  document.querySelectorAll('.research-card, .award-card, .grants-stat-card, .activity-card').forEach(card => {
+    card.classList.add('mag-card');
+    card.addEventListener('mousemove', e => {
+      const r = card.getBoundingClientRect();
+      const x = ((e.clientX - r.left) / r.width  - 0.5) * STRENGTH;
+      const y = ((e.clientY - r.top)  / r.height - 0.5) * STRENGTH;
+      card.style.transform = `translate(${x * 0.4}px, ${y * 0.4 - 4}px)`;
+      card.style.boxShadow = `${-x * 0.6}px ${-y * 0.6 + 16}px 40px rgba(0,200,255,0.1)`;
+    });
+    card.addEventListener('mouseleave', () => {
+      card.style.transform = '';
+      card.style.boxShadow = '';
+    });
+  });
+})();
+
+/* ── Impeccable Motion: Stagger grid children on reveal ──── */
+(function(){
+  const grids = document.querySelectorAll('.research-grid, .awards-grid, .grants-stats, .tech-categories');
+  const gridObs = new IntersectionObserver(entries => {
+    entries.forEach(entry => {
+      if(!entry.isIntersecting) return;
+      Array.from(entry.target.children).forEach((child, i) => {
+        child.style.transitionDelay = `${i * 60}ms`;
+        child.classList.add('reveal');
+        requestAnimationFrame(() => requestAnimationFrame(() => child.classList.add('visible')));
+      });
+      gridObs.unobserve(entry.target);
+    });
+  }, {threshold: 0.08});
+  grids.forEach(g => gridObs.observe(g));
+})();
+
+/* ── Impeccable Motion: Spring counter (overshoot + settle) ─ */
+function animateCounter(el){
+  if(el.dataset.done) return;
+  el.dataset.done = '1';
+  const target = parseInt(el.dataset.target);
+  const suffix = el.dataset.suffix || '';
+  const dur = 1800;
+  const start = performance.now();
+  function easeSpring(t) {
+    /* damped spring: overshoots ~6% then settles */
+    return 1 - Math.pow(Math.E, -6.5 * t) * Math.cos(9.5 * t);
+  }
+  function step(now){
+    const p = Math.min((now - start) / dur, 1);
+    const val = Math.round(easeSpring(p) * target);
+    el.textContent = Math.min(val, target) + suffix;
+    if(p < 1) requestAnimationFrame(step);
+    else el.textContent = target + suffix;
+  }
+  requestAnimationFrame(step);
+}
+
+/* ── Impeccable Motion: Timeline line draw ───────────────── */
+(function(){
+  const line = document.querySelector('.timeline-line');
+  if(!line) return;
+  const lineObs = new IntersectionObserver(entries => {
+    if(entries[0].isIntersecting){
+      line.classList.add('drawn');
+      lineObs.disconnect();
+    }
+  }, {threshold: 0.1});
+  lineObs.observe(line);
+})();
+
+/* ── Impeccable Motion: Page-load entrance sequence ─────── */
+(function(){
+  document.body.style.opacity = '0';
+  window.addEventListener('load', () => {
+    requestAnimationFrame(() => {
+      document.body.style.transition = 'opacity .5s var(--ease-out-expo, ease)';
+      document.body.style.opacity = '1';
+    });
+  });
+})();
 
 /* ── Publication filter ──────────────────────────────────── */
 function filterPubs(cat, btn){
