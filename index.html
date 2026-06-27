@@ -1003,6 +1003,70 @@
       color: var(--cyan); padding: .18rem .55rem; border-radius: 4px;
     }
 
+    /* ─── Patent Featured Card ───────────────────────────── */
+    .patent-card {
+      position: relative; overflow: hidden;
+      background: linear-gradient(135deg, #ffffff 0%, #f8faff 60%, #f0f4ff 100%);
+      border: 1px solid rgba(3,105,161,.2);
+      border-radius: var(--r-lg);
+      padding: 2rem 2rem 2rem 2.25rem;
+      margin-bottom: 2rem;
+      box-shadow: var(--shadow-md);
+      transition: box-shadow .3s var(--ease), transform .3s var(--ease-spring);
+    }
+    .patent-card::before {
+      content: '';
+      position: absolute; inset: 0;
+      background: linear-gradient(135deg, rgba(3,105,161,.04) 0%, rgba(109,40,217,.04) 100%);
+      pointer-events: none;
+    }
+    @media (hover: hover) and (pointer: fine) {
+      .patent-card:hover { box-shadow: var(--shadow-lg); transform: translateY(-3px); }
+    }
+    .patent-flag {
+      position: absolute; top: 0; left: 0; bottom: 0; width: 5px;
+      display: flex; flex-direction: column;
+    }
+    .patent-flag span { flex: 1; }
+    .patent-badge {
+      display: inline-flex; align-items: center;
+      font-family: var(--mono); font-size: .65rem; font-weight: 700;
+      letter-spacing: .1em; text-transform: uppercase;
+      color: #b45309; background: rgba(180,83,9,.09);
+      border: 1px solid rgba(180,83,9,.22);
+      padding: .2rem .65rem; border-radius: 100px;
+      margin-bottom: 1rem;
+    }
+    .patent-meta {
+      display: flex; align-items: center; gap: .85rem;
+      margin-bottom: .9rem;
+    }
+    .patent-icon { font-size: 2rem; line-height: 1; }
+    .patent-label {
+      font-size: .8rem; color: var(--text-muted); font-weight: 500;
+    }
+    .patent-year {
+      font-family: var(--mono); font-size: .75rem;
+      color: var(--cyan); font-weight: 700; margin-top: .15rem;
+    }
+    .patent-title {
+      font-family: var(--font-display);
+      font-size: 1.15rem; font-weight: 800;
+      color: var(--text); line-height: 1.4;
+      margin-bottom: .75rem; letter-spacing: -.015em;
+    }
+    .patent-desc {
+      font-size: .85rem; color: var(--text-muted);
+      line-height: 1.75; margin-bottom: 1.1rem; max-width: 780px;
+    }
+    .patent-tags { display: flex; flex-wrap: wrap; gap: .4rem; }
+    .patent-tag {
+      font-size: .7rem; font-weight: 600; font-family: var(--mono);
+      color: var(--cyan); background: var(--cyan-dim);
+      border: 1px solid rgba(3,105,161,.18);
+      padding: .2rem .65rem; border-radius: 100px;
+    }
+
     /* ─── Awards ─────────────────────────────────────────── */
     #awards { background: var(--bg); }
 
@@ -1879,8 +1943,34 @@
 <section id="awards">
   <div class="section-inner">
     <span class="section-tag reveal">// Recognition</span>
-    <h2 class="section-title reveal">Awards &amp; Honours</h2>
-    <p class="section-subtitle reveal">Multiple years of global recognition in research excellence and citation impact.</p>
+    <h2 class="section-title reveal">Awards, Patents &amp; Honours</h2>
+    <p class="section-subtitle reveal">Global recognition in research excellence, intellectual property, and citation impact.</p>
+
+    <!-- Featured Patent -->
+    <div class="patent-card reveal">
+      <div class="patent-flag" aria-hidden="true">
+        <span style="background:#000"></span>
+        <span style="background:#D00"></span>
+        <span style="background:#FFCE00"></span>
+      </div>
+      <div class="patent-badge">Utility Patent · Germany</div>
+      <div class="patent-meta">
+        <div class="patent-icon">🇩🇪</div>
+        <div>
+          <div class="patent-label">Deutsches Patent- und Markenamt (DPMA)</div>
+          <div class="patent-year">2025</div>
+        </div>
+      </div>
+      <div class="patent-title">Deep-Federated Advanced Metering System for Optimizing Data Security in Smart Grids</div>
+      <div class="patent-desc">A utility patent granted by the German Patent and Trade Mark Office (DPMA) for a novel deep federated learning architecture enabling privacy-preserving, secure data communication in advanced metering infrastructure within smart grid networks.</div>
+      <div class="patent-tags">
+        <span class="patent-tag">Federated Learning</span>
+        <span class="patent-tag">Smart Grid Security</span>
+        <span class="patent-tag">AMI Systems</span>
+        <span class="patent-tag">Data Privacy</span>
+      </div>
+    </div>
+
     <div class="awards-grid">
       <div class="award-card reveal">
         <div class="award-icon">🏆</div>
