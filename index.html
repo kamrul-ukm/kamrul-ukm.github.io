@@ -1207,7 +1207,7 @@
             <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M10 13a5 5 0 007.54.54l3-3a5 5 0 00-7.07-7.07l-1.72 1.71"/><path d="M14 11a5 5 0 00-7.54-.54l-3 3a5 5 0 007.07 7.07l1.71-1.71"/></svg>
             Google Scholar
           </a>
-          <a href="#" target="_blank" rel="noopener" class="hero-quick-link">
+          <a href="https://scholar.google.com/citations?user=IAybniwAAAAJ" target="_blank" rel="noopener" class="hero-quick-link">
             <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M10 13a5 5 0 007.54.54l3-3a5 5 0 00-7.07-7.07l-1.72 1.71"/><path d="M14 11a5 5 0 00-7.54-.54l-3 3a5 5 0 007.07 7.07l1.71-1.71"/></svg>
             Scopus
           </a>
@@ -1288,7 +1288,7 @@
             <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="M2 12h20M12 2a15 15 0 010 20M12 2a15 15 0 000 20"/></svg>
             UKM Profile
           </a>
-          <a href="#" target="_blank" rel="noopener" class="profile-link">Google Scholar</a>
+          <a href="https://scholar.google.com/citations?user=IAybniwAAAAJ" target="_blank" rel="noopener" class="profile-link">Google Scholar</a>
           <a href="#" target="_blank" rel="noopener" class="profile-link">Scopus</a>
           <a href="#" target="_blank" rel="noopener" class="profile-link">ResearchGate</a>
           <a href="#" target="_blank" rel="noopener" class="profile-link">Web of Science</a>
@@ -1698,67 +1698,100 @@
       <button class="filter-btn" onclick="filterPubs('nature',this)">Nature</button>
       <button class="filter-btn" onclick="filterPubs('elsevier',this)">Elsevier</button>
       <button class="filter-btn" onclick="filterPubs('acm',this)">ACM</button>
+      <button class="filter-btn" onclick="filterPubs('springer',this)">Springer</button>
     </div>
 
     <div class="pub-list" id="pubList">
-      <div class="pub-card reveal" data-cat="ieee">
+      <div class="pub-card reveal" data-cat="nature">
         <div class="pub-num">01</div>
-        <div class="pub-content">
-          <div class="pub-title">AI-Enabled Adversarial Attacks Resistant Post-Quantum Secure Authentication Protocol for Consumer Applications</div>
-          <div class="pub-meta">Prithwi Bera, Sayan Rakshit, Ashok Kumar Das, Mohammad Kamrul Hasan et al. · IEEE Transactions on Consumer Electronics · 2026</div>
-          <div class="pub-badges"><span class="badge badge-q1">Q1</span><span class="badge badge-if">IF: 10.2</span><span class="badge badge-ieee">IEEE</span></div>
-        </div>
-      </div>
-      <div class="pub-card reveal reveal-delay-1" data-cat="ieee">
-        <div class="pub-num">02</div>
-        <div class="pub-content">
-          <div class="pub-title">A Real-Time Monitoring of Communication Protocols in 6G Mobile Network using Intelligent Surface and IoT</div>
-          <div class="pub-meta">S.N. AL-Jaradi, Mohammad Kamrul Hasan et al. · IEEE Transactions on Consumer Electronics · 2025</div>
-          <div class="pub-badges"><span class="badge badge-q1">Q1</span><span class="badge badge-if">IF: 10.9</span><span class="badge badge-ieee">IEEE</span></div>
-        </div>
-      </div>
-      <div class="pub-card reveal reveal-delay-2" data-cat="ieee">
-        <div class="pub-num">03</div>
-        <div class="pub-content">
-          <div class="pub-title">Edge Smart Meter Based LSTM Federated Learning with AES Cryptographic Blockchain for Smart Grid AIoT Networks</div>
-          <div class="pub-meta">Mohammad Kamrul Hasan et al. · IEEE Communications Standards Magazine · 2025–2026</div>
-          <div class="pub-badges"><span class="badge badge-q1">Q1</span><span class="badge badge-if">IF: 6.0</span><span class="badge badge-ieee">IEEE</span></div>
-        </div>
-      </div>
-      <div class="pub-card reveal" data-cat="ieee">
-        <div class="pub-num">04</div>
-        <div class="pub-content">
-          <div class="pub-title">Evolution of Industry and Blockchain Era: Monitoring Price Hike Using BIoT for Smart Government and Industry 4.0</div>
-          <div class="pub-meta">Mohammad Kamrul Hasan et al. · IEEE Transactions on Industrial Informatics · 2022</div>
-          <div class="pub-badges"><span class="badge badge-q1">Q1</span><span class="badge badge-if">IF: 11.6</span><span class="badge badge-ieee">IEEE</span></div>
-        </div>
-      </div>
-      <div class="pub-card reveal reveal-delay-1" data-cat="nature">
-        <div class="pub-num">05</div>
-        <div class="pub-content">
-          <div class="pub-title">Smart Grid Cyber-Physical Systems: Components, Vulnerabilities, Mitigations, Opportunities, and Conceptual Framework</div>
-          <div class="pub-meta">Mohammad Kamrul Hasan et al. · Energy Reports · Elsevier · 2026</div>
-          <div class="pub-badges"><span class="badge badge-q1">Q1</span><span class="badge badge-if">IF: 4.8</span><span class="badge badge-nature">Nature Pub.</span></div>
-        </div>
-      </div>
-      <div class="pub-card reveal reveal-delay-2" data-cat="nature">
-        <div class="pub-num">06</div>
         <div class="pub-content">
           <div class="pub-title">A Dual-Branch Graph Neural Network Architecture for Drug-Target Binding Affinity Prediction</div>
           <div class="pub-meta">Khushnood Abbas, Chen Hao, Mohammad Kamrul Hasan et al. · Scientific Reports · 2026</div>
           <div class="pub-badges"><span class="badge badge-q1">Q1</span><span class="badge badge-if">IF: 4.8</span><span class="badge badge-nature">Nature Pub.</span></div>
         </div>
       </div>
+      <div class="pub-card reveal reveal-delay-1" data-cat="ieee">
+        <div class="pub-num">02</div>
+        <div class="pub-content">
+          <div class="pub-title">AI-Enabled Adversarial Attacks Resistant Post-Quantum Secure Authentication Protocol for Consumer Applications</div>
+          <div class="pub-meta">Prithwi Bera, Sayan Rakshit, Ashok Kumar Das, Mohammad Kamrul Hasan et al. · IEEE Transactions on Consumer Electronics · 2026</div>
+          <div class="pub-badges"><span class="badge badge-q1">Q1</span><span class="badge badge-if">IF: 10.2</span><span class="badge badge-ieee">IEEE</span></div>
+        </div>
+      </div>
+      <div class="pub-card reveal reveal-delay-2" data-cat="elsevier">
+        <div class="pub-num">03</div>
+        <div class="pub-content">
+          <div class="pub-title">Smart Grid Cyber-Physical Systems: Components, Vulnerabilities, Mitigations, Opportunities, and Conceptual Framework</div>
+          <div class="pub-meta">Mohammad Kamrul Hasan et al. · Energy Reports · Elsevier · 2026</div>
+          <div class="pub-badges"><span class="badge badge-q1">Q1</span><span class="badge badge-if">IF: 4.8</span></div>
+        </div>
+      </div>
       <div class="pub-card reveal" data-cat="elsevier">
-        <div class="pub-num">07</div>
+        <div class="pub-num">04</div>
         <div class="pub-content">
           <div class="pub-title">Life Cycle of Lithium-ion Battery Recycling: Carbon Capture, Utilization, and Storage — A Review</div>
           <div class="pub-meta">Nabeel Al-Qirim, Mohammad Kamrul Hasan et al. · Energy Strategy Reviews · Elsevier · 2026</div>
           <div class="pub-badges"><span class="badge badge-q1">Q1</span><span class="badge badge-if">IF: 9.9</span></div>
         </div>
       </div>
-      <div class="pub-card reveal reveal-delay-1" data-cat="acm">
+      <div class="pub-card reveal reveal-delay-1" data-cat="other">
+        <div class="pub-num">05</div>
+        <div class="pub-content">
+          <div class="pub-title">Autonomous Vehicles with Augmented Reality, Internet of Things, and Edge Intelligence</div>
+          <div class="pub-meta">Amjed Abbas Ahmed, Aqeel Kamil Kadhim, Mohammad Kamrul Hasan et al. · PLOS ONE · 2025</div>
+          <div class="pub-badges"><span class="badge badge-q1">Q1</span><span class="badge badge-if">PLOS</span></div>
+        </div>
+      </div>
+      <div class="pub-card reveal reveal-delay-2" data-cat="ieee">
+        <div class="pub-num">06</div>
+        <div class="pub-content">
+          <div class="pub-title">A Real-Time Monitoring of Communication Protocols in 6G Mobile Network using Intelligent Surface and IoT</div>
+          <div class="pub-meta">S.N. AL-Jaradi, Mohammad Kamrul Hasan et al. · IEEE Transactions on Consumer Electronics · 2025</div>
+          <div class="pub-badges"><span class="badge badge-q1">Q1</span><span class="badge badge-if">IF: 10.9</span><span class="badge badge-ieee">IEEE</span></div>
+        </div>
+      </div>
+      <div class="pub-card reveal" data-cat="springer">
+        <div class="pub-num">07</div>
+        <div class="pub-content">
+          <div class="pub-title">Data Space Privacy Model with Federated Learning Technique for Securing IoT Communication</div>
+          <div class="pub-meta">Taher M. Ghazal, Mohammad Kamrul Hasan et al. · Journal of Intelligent &amp; Robotic Systems · Springer · 2025</div>
+          <div class="pub-badges"><span class="badge badge-q1">Q2</span><span class="badge badge-acm">Springer</span></div>
+        </div>
+      </div>
+      <div class="pub-card reveal reveal-delay-1" data-cat="springer">
         <div class="pub-num">08</div>
+        <div class="pub-content">
+          <div class="pub-title">Review on Honeynet Analysis: Can LSTM and Shot Learning Drive Intelligent Cyber Threat Detection?</div>
+          <div class="pub-meta">T.A.M. Tajul Ariffin, S.N.H. Sheikh Abdullah, F. Fauzi, Mohammad Kamrul Hasan et al. · Cluster Computing · Springer · 2025</div>
+          <div class="pub-badges"><span class="badge badge-q1">Q1</span><span class="badge badge-acm">Springer</span></div>
+        </div>
+      </div>
+      <div class="pub-card reveal reveal-delay-2" data-cat="springer">
+        <div class="pub-num">09</div>
+        <div class="pub-content">
+          <div class="pub-title">Intelligent Device-to-Device Handover Management Techniques for 5G/6G and Beyond</div>
+          <div class="pub-meta">S.M. Topazal, Shayla Islam, R. Kolandaisamy, Mohammad Kamrul Hasan et al. · The Journal of Supercomputing · Springer · 2025</div>
+          <div class="pub-badges"><span class="badge badge-q1">Q2</span><span class="badge badge-acm">Springer</span></div>
+        </div>
+      </div>
+      <div class="pub-card reveal" data-cat="springer">
+        <div class="pub-num">10</div>
+        <div class="pub-content">
+          <div class="pub-title">A Comprehensive Survey on 6G-Security: Physical Connection and Service Layers</div>
+          <div class="pub-meta">Mamoon M. Saeed, Rashid A. Saeed, Mohammad Kamrul Hasan et al. · Discover Internet of Things · Springer · 2025</div>
+          <div class="pub-badges"><span class="badge badge-q1">Q2</span><span class="badge badge-acm">Springer</span></div>
+        </div>
+      </div>
+      <div class="pub-card reveal reveal-delay-1" data-cat="ieee">
+        <div class="pub-num">11</div>
+        <div class="pub-content">
+          <div class="pub-title">Edge Smart Meter Based LSTM Federated Learning with AES Cryptographic Blockchain for Smart Grid AIoT Networks</div>
+          <div class="pub-meta">Mohammad Kamrul Hasan et al. · IEEE Communications Standards Magazine · 2025–2026</div>
+          <div class="pub-badges"><span class="badge badge-q1">Q1</span><span class="badge badge-if">IF: 6.0</span><span class="badge badge-ieee">IEEE</span></div>
+        </div>
+      </div>
+      <div class="pub-card reveal reveal-delay-2" data-cat="acm">
+        <div class="pub-num">12</div>
         <div class="pub-content">
           <div class="pub-title">Multi-Hop and Mesh for LoRa Networks: Recent Advancements, Issues, and Recommended Applications</div>
           <div class="pub-meta">Andrew Wei-Loong Wong, Mohammad Kamrul Hasan, Salmah Fattah · ACM Computing Surveys</div>
