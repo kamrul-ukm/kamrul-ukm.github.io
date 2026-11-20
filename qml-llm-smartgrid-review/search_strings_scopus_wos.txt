@@ -1,0 +1,60 @@
+READY-TO-PASTE SEARCH STRINGS
+Systematic review: QML with LLM in smart grid generation to consumer billing
+Prepared 2026-11-20
+
+============================================================
+1) SCOPUS  (Advanced document search -> paste the whole block)
+============================================================
+(
+  ( TITLE-ABS-KEY ( "quantum machine learning" OR "quantum neural network*" OR "variational quantum" OR "parameterized quantum circuit*" OR "parametrized quantum circuit*" OR "quantum kernel*" OR "quantum support vector" OR qsvm OR "quantum long short-term memory" OR qlstm OR "quantum annealing" OR qaoa OR "quantum approximate optimization" OR "hybrid quantum-classical" OR "quantum-enhanced" OR "quantum computing" OR "quantum algorithm*" OR "quantum transformer*" )
+    AND TITLE-ABS-KEY ( "smart grid*" OR "power system*" OR "power grid*" OR "electric* grid*" OR "electricity network*" OR "energy system*" OR "power generation" OR "unit commitment" OR "economic dispatch" OR "transmission system*" OR "distribution system*" OR "distribution network*" OR microgrid* OR "distributed energy resource*" OR "smart meter*" OR "advanced metering infrastructure" OR "demand response" OR "load forecasting" OR "electricity theft" OR "energy theft" OR "electricity billing" OR "energy billing" OR "utility billing" OR "electricity tariff*" OR "electricity market*" ) )
+  OR
+  ( TITLE-ABS-KEY ( "large language model*" OR llm OR llms OR "generative pre-trained transformer*" OR gpt OR chatgpt OR "foundation model*" OR "generative AI" OR "generative artificial intelligence" OR "retrieval-augmented generation" OR "LLM agent*" OR "language model agent*" OR "small language model*" OR slm OR slms OR "tiny language model*" OR "lightweight language model*" OR "compact language model*" OR "on-device language model*" OR "edge language model*" OR "small-large model*" OR "large-small model*" )
+    AND TITLE-ABS-KEY ( "smart grid*" OR "power system*" OR "power grid*" OR "electric* grid*" OR "electricity network*" OR "energy system*" OR "power generation" OR "unit commitment" OR "economic dispatch" OR "transmission system*" OR "distribution system*" OR "distribution network*" OR microgrid* OR "distributed energy resource*" OR "smart meter*" OR "advanced metering infrastructure" OR "demand response" OR "load forecasting" OR "electricity theft" OR "energy theft" OR "electricity billing" OR "energy billing" OR "utility billing" OR "electricity tariff*" OR "electricity market*" ) )
+  OR
+  ( TITLE-ABS-KEY ( "post-quantum" OR "quantum-safe" OR "quantum-resistant" OR "quantum key distribution" OR qkd OR kyber OR "ML-KEM" OR "ML-DSA" OR dilithium OR "lattice-based cryptograph*" )
+    AND TITLE-ABS-KEY ( "smart meter*" OR "advanced metering infrastructure" OR "metering system*" OR "smart grid*" OR "power grid*" OR scada OR substation* OR "IEC 61850" OR dlms OR "IEEE 2030.5" ) )
+)
+AND PUBYEAR > 2017 AND PUBYEAR < 2027
+AND ( LIMIT-TO ( DOCTYPE , "ar" ) OR LIMIT-TO ( DOCTYPE , "cp" ) OR LIMIT-TO ( DOCTYPE , "re" ) )
+AND ( LIMIT-TO ( LANGUAGE , "English" ) )
+
+Export: select all -> Export -> CSV -> tick ALL information fields
+(citation info, bibliographic info, abstract & keywords, funding, other info).
+Scopus CSV exports up to 20,000 records at once.
+
+============================================================
+2) WEB OF SCIENCE CORE COLLECTION  (Advanced Search -> Query Builder)
+============================================================
+(
+  ( TS=("quantum machine learning" OR "quantum neural network*" OR "variational quantum" OR "parameterized quantum circuit*" OR "parametrized quantum circuit*" OR "quantum kernel*" OR "quantum support vector" OR QSVM OR "quantum long short-term memory" OR QLSTM OR "quantum annealing" OR QAOA OR "quantum approximate optimization" OR "hybrid quantum-classical" OR "quantum-enhanced" OR "quantum computing" OR "quantum algorithm*" OR "quantum transformer*")
+    AND TS=("smart grid*" OR "power system*" OR "power grid*" OR "electric* grid*" OR "electricity network*" OR "energy system*" OR "power generation" OR "unit commitment" OR "economic dispatch" OR "transmission system*" OR "distribution system*" OR "distribution network*" OR microgrid* OR "distributed energy resource*" OR "smart meter*" OR "advanced metering infrastructure" OR "demand response" OR "load forecasting" OR "electricity theft" OR "energy theft" OR "electricity billing" OR "energy billing" OR "utility billing" OR "electricity tariff*" OR "electricity market*") )
+  OR
+  ( TS=("large language model*" OR LLM OR LLMs OR "generative pre-trained transformer*" OR GPT OR ChatGPT OR "foundation model*" OR "generative AI" OR "generative artificial intelligence" OR "retrieval-augmented generation" OR "LLM agent*" OR "language model agent*" OR "small language model*" OR SLM OR SLMs OR "tiny language model*" OR "lightweight language model*" OR "compact language model*" OR "on-device language model*" OR "edge language model*" OR "small-large model*" OR "large-small model*")
+    AND TS=("smart grid*" OR "power system*" OR "power grid*" OR "electric* grid*" OR "electricity network*" OR "energy system*" OR "power generation" OR "unit commitment" OR "economic dispatch" OR "transmission system*" OR "distribution system*" OR "distribution network*" OR microgrid* OR "distributed energy resource*" OR "smart meter*" OR "advanced metering infrastructure" OR "demand response" OR "load forecasting" OR "electricity theft" OR "energy theft" OR "electricity billing" OR "energy billing" OR "utility billing" OR "electricity tariff*" OR "electricity market*") )
+  OR
+  ( TS=("post-quantum" OR "quantum-safe" OR "quantum-resistant" OR "quantum key distribution" OR QKD OR Kyber OR "ML-KEM" OR "ML-DSA" OR Dilithium OR "lattice-based cryptograph*")
+    AND TS=("smart meter*" OR "advanced metering infrastructure" OR "metering system*" OR "smart grid*" OR "power grid*" OR SCADA OR substation* OR "IEC 61850" OR DLMS OR "IEEE 2030.5") )
+)
+AND PY=(2018-2026)
+AND DT=(Article OR Proceedings Paper OR Review)
+AND LA=(English)
+
+Export: Export -> Excel (or Tab delimited file) -> Record Content: "Full Record"
+(add "and Cited References" only if you also want bibliometric/VOSviewer analysis).
+WoS exports max 1,000 records per batch (500 with cited references) -> export in
+batches 1-1000, 1001-2000, ... and send all files.
+
+============================================================
+NOTES
+============================================================
+- The plain word "transformer" is deliberately left out of the LLM block,
+  because it pulls in thousands of power-transformer papers.
+- Small language models (SLMs) and small-large model collaboration terms are
+  included in the language-model block. "SLM" can also mean spatial light
+  modulator or selective laser melting; such records are removed at screening.
+- No publisher filter is applied at search time. The publisher restriction
+  (IEEE, Elsevier, Springer, ACM, Wiley/IET, MDPI) is applied during screening
+  from the exported Publisher field, so no records are lost to name variants.
+- For the PRISMA log, record: date of search, total hits per database, and the
+  number exported.
