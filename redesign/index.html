@@ -10,317 +10,442 @@
   <title>Dr. Mohammad Kamrul Hasan | Cybersecurity & AI Researcher</title>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,600;0,8..60,700;1,8..60,400&family=Plus+Jakarta+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,400&family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,400;1,9..144,500&display=swap" rel="stylesheet" />
-  <meta name="theme-color" content="#ffffff" />
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,400&family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,400;1,9..144,500&display=swap" rel="stylesheet" />
+  <meta name="theme-color" content="#060a18" />
   <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='6' fill='%231c1a17'/%3E%3Ctext x='16' y='22' font-family='Georgia,serif' font-size='15' font-style='italic' fill='%23faf9f6' text-anchor='middle'%3EKH%3C/text%3E%3C/svg%3E" />
   <style>
-    /* ── Academic minimal theme ───────────────────────────── */
-    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-    :root {
-      --bg: #ffffff;
-      --bg-alt: #f7f7f5;
-      --text: #1d1d1f;
-      --text-dim: #3c4043;
-      --text-muted: #6b6f76;
-      --rule: #e5e5e2;
-      --accent: #1a4d8f;
-      --accent-soft: #eef3fa;
-      --accent-2: #9b2c2c;
-      --serif: "Source Serif 4", Georgia, "Times New Roman", serif;
-      --sans: "Inter", "Plus Jakarta Sans", system-ui, -apple-system, Segoe UI, sans-serif;
-      --side-w: 300px;
-    }
-    html { scroll-behavior: smooth; scroll-padding-top: 24px; }
-    body { background: var(--bg); color: var(--text); font-family: var(--sans); font-size: 16px; line-height: 1.65; -webkit-font-smoothing: antialiased; }
-    a { color: var(--accent); text-decoration: none; }
-    a:hover { text-decoration: underline; text-underline-offset: 3px; }
-    img { max-width: 100%; display: block; }
-    svg { flex-shrink: 0; }
+:root{
+  --bg:#060a18; --bg2:#0a1024; --ink:#eef2fb; --muted:#a3aecb; --dim:#6f7a99;
+  --glass:rgba(255,255,255,.055); --glass2:rgba(255,255,255,.09); --line:rgba(255,255,255,.12); --line2:rgba(255,255,255,.2);
+  --gold:#f3c56b; --gold2:#ffdf9e; --amber:#e8963c; --cyan:#5ee1ff; --violet:#8f7cff; --rose:#ff7aa8; --green:#5be3a1;
+  --grad:linear-gradient(120deg,#ffe6ad 0%,#f3c56b 35%,#e8963c 70%,#ffcf85 100%);
+  --grad2:linear-gradient(120deg,#5ee1ff,#8f7cff 55%,#ff7aa8);
+  --r:18px; --serif:'Fraunces',Georgia,serif; --sans:'Plus Jakarta Sans',system-ui,sans-serif;
+  --shadow:0 20px 60px -20px rgba(0,0,0,.65),0 2px 0 rgba(255,255,255,.04) inset;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth;scroll-padding-top:90px}
+body{font-family:var(--sans);background:var(--bg);color:var(--ink);line-height:1.65;overflow-x:hidden;-webkit-font-smoothing:antialiased}
+a{color:inherit}
+img{max-width:100%;display:block}
+::selection{background:rgba(243,197,107,.35)}
 
-    /* ── Layout: fixed profile sidebar + reading column ── */
-    .layout { display: grid; grid-template-columns: var(--side-w) minmax(0, 1fr); max-width: 1240px; margin: 0 auto; }
-    .sidebar { position: sticky; top: 0; height: 100vh; overflow-y: auto; border-right: 1px solid var(--rule); padding: 44px 30px 32px; scrollbar-width: thin; }
-    .side-top { display: flex; flex-direction: column; gap: 18px; }
-    .side-photo { width: 150px; height: 150px; object-fit: cover; border-radius: 50%; border: 1px solid var(--rule); }
-    .side-name { font-family: var(--serif); font-size: 1.55rem; font-weight: 600; line-height: 1.2; letter-spacing: -0.01em; }
-    .side-pos { font-size: .92rem; color: var(--text-dim); margin-top: 6px; }
-    .side-inst { font-size: .86rem; color: var(--text-muted); margin-top: 2px; line-height: 1.5; }
-    .side-status { font-size: .8rem; color: var(--accent-2); margin: 16px 0 6px; font-weight: 500; line-height: 1.45; }
-    .side-nav { list-style: none; margin: 22px 0; border-top: 1px solid var(--rule); padding-top: 14px; }
-    .side-nav a { display: block; padding: 5px 0 5px 12px; font-size: .9rem; color: var(--text-muted); border-left: 2px solid transparent; transition: color .15s, border-color .15s; }
-    .side-nav a:hover { color: var(--text); text-decoration: none; }
-    .side-nav a.current { color: var(--accent); border-left-color: var(--accent); font-weight: 600; }
-    .side-links { list-style: none; border-top: 1px solid var(--rule); padding-top: 14px; display: flex; flex-direction: column; gap: 6px; }
-    .side-links a { display: inline-flex; align-items: center; gap: 8px; font-size: .84rem; color: var(--text-dim); }
-    .side-links a svg { color: var(--text-muted); }
-    .hamburger { display: none; }
+/* ── Ambient aurora background ── */
+.aurora{position:fixed;inset:0;z-index:-2;overflow:hidden;pointer-events:none;background:radial-gradient(1200px 800px at 50% -10%,#121a3a 0%,var(--bg) 60%)}
+.aurora i{position:absolute;border-radius:50%;filter:blur(90px);opacity:.42;mix-blend-mode:screen;animation:drift 26s ease-in-out infinite alternate}
+.aurora i:nth-child(1){width:46vw;height:46vw;left:-12vw;top:-8vw;background:#3b4bff}
+.aurora i:nth-child(2){width:38vw;height:38vw;right:-10vw;top:18vh;background:#0fb5d6;animation-duration:32s;animation-delay:-8s}
+.aurora i:nth-child(3){width:34vw;height:34vw;left:30vw;bottom:-14vw;background:#b0560f;opacity:.3;animation-duration:38s;animation-delay:-16s}
+@keyframes drift{0%{transform:translate(0,0) scale(1)}50%{transform:translate(6vw,4vh) scale(1.12)}100%{transform:translate(-4vw,8vh) scale(.95)}}
+.grain{position:fixed;inset:0;z-index:-1;pointer-events:none;opacity:.05;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='3'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E")}
+.gridlines{position:fixed;inset:0;z-index:-1;pointer-events:none;background-image:linear-gradient(rgba(255,255,255,.025) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.025) 1px,transparent 1px);background-size:64px 64px;mask-image:radial-gradient(ellipse at 50% 0%,#000 20%,transparent 70%)}
 
-    .content { padding: 44px 56px 40px; min-width: 0; }
-    section { padding: 34px 0 38px; border-bottom: 1px solid var(--rule); }
-    section:last-of-type { border-bottom: none; }
-    .section-wrap, .page-wrap { max-width: 800px; }
-    .section-label { display: block; font-size: .72rem; letter-spacing: .14em; text-transform: uppercase; color: var(--text-muted); font-weight: 600; margin-bottom: 6px; }
-    .section-heading { font-family: var(--serif); font-size: 1.75rem; font-weight: 600; letter-spacing: -0.01em; line-height: 1.25; margin-bottom: 6px; }
-    .section-sub { color: var(--text-muted); font-size: .95rem; margin-bottom: 22px; }
+/* ── Scroll progress + cursor glow ── */
+#progress{position:fixed;top:0;left:0;height:3px;width:100%;transform-origin:0 50%;transform:scaleX(0);background:var(--grad);z-index:1001;box-shadow:0 0 12px rgba(243,197,107,.7)}
+#cursorGlow{position:fixed;width:520px;height:520px;border-radius:50%;pointer-events:none;z-index:-1;background:radial-gradient(circle,rgba(143,124,255,.13),transparent 65%);transform:translate(-50%,-50%);transition:opacity .4s;left:-600px;top:-600px}
 
-    /* reveal: quiet fade */
-    .reveal { opacity: 0; transform: translateY(6px); transition: opacity .5s ease, transform .5s ease; }
-    .reveal.visible { opacity: 1; transform: none; }
-    @media (prefers-reduced-motion: reduce) { .reveal { opacity: 1; transform: none; transition: none; } html { scroll-behavior: auto; } }
+/* ── Navigation (floating glass pill) ── */
+#navbar{position:fixed;top:14px;left:50%;transform:translateX(-50%);width:min(1180px,calc(100% - 28px));z-index:1000;border-radius:999px;background:rgba(10,16,36,.55);backdrop-filter:blur(18px) saturate(160%);-webkit-backdrop-filter:blur(18px) saturate(160%);border:1px solid var(--line);box-shadow:0 10px 40px -12px rgba(0,0,0,.6),inset 0 1px 0 rgba(255,255,255,.08);transition:top .3s,background .3s}
+#navbar.scrolled{top:8px;background:rgba(8,12,28,.78)}
+.nav-inner{display:flex;align-items:center;justify-content:space-between;padding:10px 12px 10px 22px;gap:12px}
+.nav-logo{font-family:var(--serif);font-size:1.12rem;font-weight:600;text-decoration:none;letter-spacing:.01em;display:flex;align-items:center;gap:10px;white-space:nowrap}
+.nav-logo::before{content:"KH";display:grid;place-items:center;width:32px;height:32px;border-radius:10px;font-size:.82rem;font-style:italic;color:#1a1204;background:var(--grad);box-shadow:0 4px 14px rgba(243,197,107,.4)}
+.nav-links{list-style:none;display:flex;gap:2px;align-items:center;position:relative}
+.nav-links a{display:block;padding:8px 13px;border-radius:999px;text-decoration:none;font-size:.86rem;font-weight:500;color:var(--muted);transition:color .25s,background .25s}
+.nav-links a:hover{color:var(--ink);background:rgba(255,255,255,.06)}
+.nav-links a.current{color:var(--ink);background:rgba(255,255,255,.1);box-shadow:inset 0 1px 0 rgba(255,255,255,.12)}
+.nav-links a.nav-cta{color:#1a1204;background:var(--grad);font-weight:700;margin-left:6px;box-shadow:0 6px 18px -6px rgba(243,197,107,.7)}
+.nav-links a.nav-cta:hover{filter:brightness(1.08)}
+.hamburger{display:none;background:none;border:0;cursor:pointer;padding:10px;flex-direction:column;gap:5px}
+.hamburger span{display:block;width:22px;height:2px;background:var(--ink);border-radius:2px;transition:.3s}
+.hamburger.open span:nth-child(1){transform:translateY(7px) rotate(45deg)}
+.hamburger.open span:nth-child(2){opacity:0}
+.hamburger.open span:nth-child(3){transform:translateY(-7px) rotate(-45deg)}
 
-    /* ── Overview ── */
-    #hero { padding-top: 4px; }
-    .hero-bio { font-family: var(--serif); font-size: 1.18rem; line-height: 1.65; color: var(--text); margin: 6px 0 26px; }
-    .hero-stats { display: grid; grid-template-columns: repeat(4, 1fr); border-top: 1px solid var(--rule); border-bottom: 1px solid var(--rule); margin-bottom: 26px; }
-    .stat-item { padding: 16px 12px 14px 0; }
-    .stat-item + .stat-item { padding-left: 16px; border-left: 1px solid var(--rule); }
-    .stat-num { display: block; font-family: var(--serif); font-size: 1.7rem; font-weight: 600; color: var(--text); line-height: 1.1; }
-    .stat-label { display: block; font-size: .76rem; color: var(--text-muted); margin-top: 4px; }
-    .hero-actions { display: flex; gap: 12px; flex-wrap: wrap; }
-    .btn-primary, .btn-outline { display: inline-flex; align-items: center; gap: 8px; padding: 9px 18px; font-size: .88rem; font-weight: 600; border-radius: 4px; transition: background .15s, color .15s; }
-    .btn-primary { background: var(--accent); color: #fff; border: 1px solid var(--accent); }
-    .btn-primary:hover { background: #143d72; text-decoration: none; }
-    .btn-outline { color: var(--accent); border: 1px solid var(--accent); }
-    .btn-outline:hover { background: var(--accent-soft); text-decoration: none; }
+/* ── Back to top ── */
+#back-top{position:fixed;right:22px;bottom:22px;z-index:999;width:48px;height:48px;border-radius:50%;border:1px solid var(--line2);background:rgba(10,16,36,.7);backdrop-filter:blur(12px);color:var(--gold);cursor:pointer;display:grid;place-items:center;opacity:0;transform:translateY(16px);transition:.35s;box-shadow:0 10px 30px -10px rgba(0,0,0,.7)}
+#back-top.visible{opacity:1;transform:none}
+#back-top svg{width:20px;height:20px;stroke:currentColor}
 
-    /* ── About ── */
-    .about-grid { display: grid; grid-template-columns: 1fr; gap: 24px; }
-    .about-prose p { margin-bottom: 14px; color: var(--text-dim); }
-    .about-prose strong { color: var(--text); font-weight: 600; }
-    .profile-links { display: flex; flex-wrap: wrap; gap: 6px 18px; margin-top: 8px; }
-    .profile-link { display: inline-flex; align-items: center; gap: 6px; font-size: .86rem; }
-    .edu-card { border-top: 1px solid var(--rule); padding-top: 18px; }
-    .edu-card h3 { font-family: var(--serif); font-size: 1.15rem; font-weight: 600; margin-bottom: 10px; }
-    .edu-list { list-style: none; }
-    .edu-item { display: grid; grid-template-columns: 64px 1fr; gap: 12px; padding: 9px 0; border-bottom: 1px dashed var(--rule); }
-    .edu-item:last-child { border-bottom: none; }
-    .edu-deg { font-size: .78rem; font-weight: 700; color: var(--accent); letter-spacing: .04em; padding-top: 2px; }
-    .edu-title { font-weight: 600; font-size: .95rem; }
-    .edu-detail { font-size: .85rem; color: var(--text-muted); }
+/* ── Layout helpers ── */
+section{position:relative;padding:120px 0 40px}
+.section-wrap,.page-wrap{width:min(1180px,calc(100% - 48px));margin:0 auto}
+.section-label{display:inline-flex;align-items:center;gap:8px;font-size:.72rem;font-weight:700;letter-spacing:.18em;text-transform:uppercase;color:var(--gold);padding:6px 14px;border-radius:999px;background:rgba(243,197,107,.08);border:1px solid rgba(243,197,107,.25)}
+.section-label::before{content:"";width:6px;height:6px;border-radius:50%;background:var(--gold);box-shadow:0 0 10px var(--gold)}
+.section-heading{font-family:var(--serif);font-weight:500;font-size:clamp(2.1rem,4.4vw,3.4rem);line-height:1.08;letter-spacing:-.015em;margin:18px 0 12px;background:linear-gradient(180deg,#fff 30%,#b9c3e0);-webkit-background-clip:text;background-clip:text;color:transparent}
+.section-heading em,.section-heading i{font-style:italic;background:var(--grad);-webkit-background-clip:text;background-clip:text;color:transparent}
+.section-sub{color:var(--muted);max-width:640px;font-size:1.02rem;margin-bottom:46px}
 
-    /* ── Career timeline as dated rows ── */
-    .timeline { border-top: 1px solid var(--rule); }
-    .timeline-item { display: grid; grid-template-columns: 170px 1fr; column-gap: 20px; padding: 14px 0; border-bottom: 1px solid var(--rule); }
-    .timeline-dot { display: none; }
-    .timeline-period { grid-column: 1; grid-row: 1 / span 3; font-size: .82rem; color: var(--text-muted); font-variant-numeric: tabular-nums; padding-top: 2px; }
-    .timeline-role { grid-column: 2; font-weight: 600; }
-    .timeline-org { grid-column: 2; font-size: .9rem; color: var(--text-dim); }
-    .timeline-note { grid-column: 2; font-size: .85rem; color: var(--text-muted); font-style: italic; }
+/* glass card base */
+.glass,.edu-card,.timeline-item,.activity-card,.research-card,.award-card,.patent-card,.pub-card,.grants-stat-card,.grant-item,.tech-group,.contact-info,.contact-form,.lab-banner{
+  position:relative;background:linear-gradient(160deg,rgba(255,255,255,.085),rgba(255,255,255,.025) 60%);border:1px solid var(--line);border-radius:var(--r);
+  backdrop-filter:blur(14px) saturate(140%);-webkit-backdrop-filter:blur(14px) saturate(140%);box-shadow:var(--shadow);isolation:isolate;overflow:hidden}
+/* glossy top sheen */
+.edu-card::before,.activity-card::before,.research-card::before,.award-card::before,.patent-card::before,.pub-card::before,.grants-stat-card::before,.grant-item::before,.tech-group::before,.contact-info::before,.contact-form::before,.timeline-item::before{
+  content:"";position:absolute;inset:0 0 auto 0;height:50%;background:linear-gradient(180deg,rgba(255,255,255,.07),transparent);pointer-events:none;z-index:-1}
+/* cursor spotlight */
+.spot::after{content:"";position:absolute;inset:0;border-radius:inherit;pointer-events:none;z-index:-1;opacity:0;transition:opacity .35s;background:radial-gradient(380px circle at var(--mx,50%) var(--my,50%),rgba(243,197,107,.16),transparent 45%)}
+.spot:hover::after{opacity:1}
+.spot{transition:transform .35s cubic-bezier(.2,.8,.2,1),border-color .35s,box-shadow .35s}
+.spot:hover{border-color:rgba(243,197,107,.35);box-shadow:0 30px 70px -25px rgba(0,0,0,.8),0 0 0 1px rgba(243,197,107,.12)}
 
-    /* ── Activities ── */
-    .activities-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 0 28px; }
-    .activity-card { padding: 16px 0; border-top: 1px solid var(--rule); }
-    .activity-header { display: flex; justify-content: space-between; align-items: baseline; gap: 10px; margin-bottom: 6px; }
-    .activity-title { font-weight: 600; font-size: .95rem; line-height: 1.4; }
-    .activity-status { font-size: .68rem; text-transform: uppercase; letter-spacing: .08em; font-weight: 700; white-space: nowrap; }
-    .activity-status.active { color: #2e6b3a; }
-    .activity-status.submitted { color: #9a6a12; }
-    .activity-status.review { color: var(--accent); }
-    .activity-desc { font-size: .87rem; color: var(--text-dim); margin-bottom: 10px; }
-    .activity-progress-labels { display: flex; justify-content: space-between; font-size: .72rem; color: var(--text-muted); margin-bottom: 4px; }
-    .activity-progress-bar { height: 2px; background: var(--rule); }
-    .activity-progress-fill { height: 2px; width: 0; background: var(--accent); transition: width 1.1s ease; }
-    .activity-tags, .research-tags { display: flex; flex-wrap: wrap; gap: 4px 12px; margin-top: 10px; }
-    .tag { font-size: .74rem; color: var(--text-muted); }
-    .tag::before { content: "#"; color: var(--rule); margin-right: 1px; }
+/* ── Reveal animations ── */
+.reveal{opacity:0;transform:translateY(34px);filter:blur(6px);transition:opacity .9s cubic-bezier(.2,.8,.2,1),transform .9s cubic-bezier(.2,.8,.2,1),filter .9s}
+.reveal.visible{opacity:1;transform:none;filter:none}
+.reveal-delay-1{transition-delay:.1s}.reveal-delay-2{transition-delay:.2s}.reveal-delay-3{transition-delay:.3s}
 
-    /* ── Research areas ── */
-    .research-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 0 28px; }
-    .research-card { padding: 18px 0; border-top: 1px solid var(--rule); }
-    .research-index { font-size: .72rem; color: var(--accent-2); font-weight: 700; letter-spacing: .08em; }
-    .research-card h3 { font-family: var(--serif); font-size: 1.12rem; font-weight: 600; margin: 4px 0 6px; }
-    .research-card p { font-size: .9rem; color: var(--text-dim); }
+/* ── HERO ── */
+#hero{min-height:100vh;display:flex;align-items:center;padding:130px 0 70px;overflow:hidden}
+#heroNet{position:absolute;inset:0;width:100%;height:100%;z-index:-1;opacity:.75;mask-image:radial-gradient(ellipse at 60% 45%,#000 35%,transparent 78%)}
+.hero-grid{display:grid;grid-template-columns:minmax(280px,420px) 1fr;gap:64px;align-items:center}
+.hero-photo-col{display:flex;flex-direction:column;align-items:center;gap:26px}
+.hero-photo{position:relative;width:min(360px,78vw);aspect-ratio:1;border-radius:50%;padding:7px;animation:float 7s ease-in-out infinite}
+.hero-photo::before{content:"";position:absolute;inset:0;border-radius:50%;background:conic-gradient(from var(--ang,0deg),#ffe6ad,#e8963c,#8f7cff,#5ee1ff,#ffe6ad);animation:spin 8s linear infinite;filter:saturate(1.2)}
+.hero-photo::after{content:"";position:absolute;inset:-28px;border-radius:50%;background:radial-gradient(circle,rgba(243,197,107,.35),transparent 65%);z-index:-1;filter:blur(20px)}
+.hero-photo img{position:relative;width:100%;height:100%;object-fit:cover;border-radius:50%;border:5px solid var(--bg);box-shadow:inset 0 0 40px rgba(0,0,0,.4)}
+.hero-photo .gloss{position:absolute;inset:7px;border-radius:50%;pointer-events:none;background:linear-gradient(150deg,rgba(255,255,255,.38) 0%,rgba(255,255,255,.06) 32%,transparent 50%);mix-blend-mode:soft-light}
+.orbit-badge{position:absolute;padding:8px 14px;border-radius:999px;font-size:.74rem;font-weight:700;white-space:nowrap;background:rgba(10,16,36,.78);border:1px solid var(--line2);backdrop-filter:blur(10px);box-shadow:0 10px 30px -10px rgba(0,0,0,.8);display:flex;align-items:center;gap:7px}
+.orbit-badge b{background:var(--grad);-webkit-background-clip:text;background-clip:text;color:transparent;font-size:.95rem}
+.orbit-badge.b1{top:6%;right:-14%;animation:float 6s ease-in-out infinite .5s}
+.orbit-badge.b2{bottom:10%;left:-16%;animation:float 6.5s ease-in-out infinite 1.2s}
+.orbit-badge.b3{bottom:-2%;right:-2%;animation:float 7s ease-in-out infinite 2s}
+@property --ang{syntax:'<angle>';inherits:false;initial-value:0deg}
+@keyframes spin{to{--ang:360deg}}
+@keyframes float{0%,100%{transform:translateY(0)}50%{transform:translateY(-12px)}}
+.hero-quick-links{display:flex;flex-wrap:wrap;justify-content:center;gap:8px}
+.hero-quick-link{display:inline-flex;align-items:center;gap:7px;padding:8px 14px;border-radius:999px;font-size:.8rem;font-weight:600;text-decoration:none;color:var(--muted);background:var(--glass);border:1px solid var(--line);transition:.3s}
+.hero-quick-link:hover{color:var(--ink);border-color:rgba(243,197,107,.45);background:rgba(243,197,107,.08);transform:translateY(-2px)}
+.hero-quick-link svg{width:15px;height:15px;stroke:var(--gold)}
+.hero-status{display:inline-flex;align-items:center;gap:10px;padding:8px 16px 8px 12px;border-radius:999px;font-size:.82rem;font-weight:600;color:var(--gold2);background:linear-gradient(90deg,rgba(243,197,107,.16),rgba(243,197,107,.04));border:1px solid rgba(243,197,107,.35)}
+.hero-status-dot{width:9px;height:9px;border-radius:50%;background:var(--green);box-shadow:0 0 0 0 rgba(91,227,161,.7);animation:pulse 2s infinite}
+@keyframes pulse{70%{box-shadow:0 0 0 12px rgba(91,227,161,0)}100%{box-shadow:0 0 0 0 rgba(91,227,161,0)}}
+.hero-name{font-family:var(--serif);font-weight:500;font-size:clamp(2.6rem,6vw,4.9rem);line-height:1.02;letter-spacing:-.025em;margin:22px 0 14px}
+.hero-name .shine{background:linear-gradient(100deg,#fff 0%,#fff 40%,#ffe2a3 50%,#fff 60%,#fff 100%);background-size:250% 100%;-webkit-background-clip:text;background-clip:text;color:transparent;animation:shine 6s ease-in-out infinite}
+@keyframes shine{0%,100%{background-position:100% 0}50%{background-position:0 0}}
+.hero-position{font-size:1.15rem;font-weight:600;color:var(--ink)}
+.hero-institution{color:var(--muted);margin-top:2px}
+.hero-typed{margin-top:18px;font-family:var(--serif);font-style:italic;font-size:1.35rem;color:var(--muted);min-height:2em}
+.hero-typed .tw{background:var(--grad2);-webkit-background-clip:text;background-clip:text;color:transparent;font-weight:500}
+.hero-typed .caret{display:inline-block;width:2px;height:1.1em;background:var(--cyan);vertical-align:-3px;margin-left:3px;animation:blink 1s steps(1) infinite}
+@keyframes blink{50%{opacity:0}}
+.hero-bio{color:#c6cee3;font-size:1.04rem;max-width:640px;margin:16px 0 28px}
+.hero-stats{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-bottom:30px;max-width:680px}
+.stat-item{padding:16px 14px;border-radius:16px;background:linear-gradient(160deg,rgba(255,255,255,.09),rgba(255,255,255,.02));border:1px solid var(--line);text-align:left;position:relative;overflow:hidden}
+.stat-item::before{content:"";position:absolute;inset:0;background:linear-gradient(115deg,transparent 30%,rgba(255,255,255,.12) 45%,transparent 60%);transform:translateX(-120%);transition:transform .9s}
+.stat-item:hover::before{transform:translateX(120%)}
+.stat-num{display:block;font-family:var(--serif);font-size:1.9rem;font-weight:600;line-height:1.1;background:var(--grad);-webkit-background-clip:text;background-clip:text;color:transparent}
+.stat-label{font-size:.74rem;color:var(--muted);font-weight:600;letter-spacing:.02em}
+.hero-actions{display:flex;gap:12px;flex-wrap:wrap}
+.btn-primary,.btn-outline,.btn-glass{position:relative;overflow:hidden;display:inline-flex;align-items:center;gap:9px;padding:14px 26px;border-radius:999px;font-weight:700;font-size:.92rem;text-decoration:none;transition:transform .3s,box-shadow .3s,background .3s}
+.btn-primary{color:#1a1204;background:var(--grad);box-shadow:0 14px 34px -12px rgba(243,197,107,.75),inset 0 1px 0 rgba(255,255,255,.6)}
+.btn-primary::after,.form-submit::after,.nav-cta::after{content:"";position:absolute;top:0;left:-60%;width:40%;height:100%;background:linear-gradient(100deg,transparent,rgba(255,255,255,.65),transparent);transform:skewX(-20deg);animation:sheen 4.5s ease-in-out infinite}
+@keyframes sheen{0%,60%{left:-60%}100%{left:130%}}
+.btn-primary:hover{transform:translateY(-3px);box-shadow:0 20px 40px -12px rgba(243,197,107,.9)}
+.btn-outline,.btn-glass{color:var(--ink);background:rgba(255,255,255,.06);border:1px solid var(--line2);backdrop-filter:blur(10px)}
+.btn-outline:hover,.btn-glass:hover{transform:translateY(-3px);background:rgba(255,255,255,.12)}
+.scroll-cue{position:absolute;left:50%;bottom:22px;transform:translateX(-50%);width:26px;height:42px;border:2px solid var(--line2);border-radius:14px}
+.scroll-cue::after{content:"";position:absolute;left:50%;top:8px;width:4px;height:8px;margin-left:-2px;border-radius:2px;background:var(--gold);animation:cue 1.8s infinite}
+@keyframes cue{0%{opacity:1;transform:translateY(0)}100%{opacity:0;transform:translateY(14px)}}
 
-    /* ── Awards & patent ── */
-    .patent-card { border: 1px solid var(--rule); border-left: 3px solid var(--accent); padding: 20px 22px; margin-bottom: 24px; background: var(--bg-alt); }
-    .patent-flag { display: inline-flex; width: 26px; height: 16px; flex-direction: column; vertical-align: middle; margin-right: 8px; border: 1px solid var(--rule); }
-    .patent-flag span { flex: 1; }
-    .patent-badge { display: inline-block; font-size: .72rem; text-transform: uppercase; letter-spacing: .1em; font-weight: 700; color: var(--accent); vertical-align: middle; }
-    .patent-meta { margin: 8px 0 4px; }
-    .patent-meta > div { display: flex; gap: 10px; align-items: baseline; flex-wrap: wrap; }
-    .patent-label { font-size: .82rem; color: var(--text-muted); }
-    .patent-year { font-size: .82rem; font-weight: 700; color: var(--text); }
-    .patent-title { font-family: var(--serif); font-size: 1.15rem; font-weight: 600; margin: 4px 0 6px; }
-    .patent-desc { font-size: .9rem; color: var(--text-dim); }
-    .patent-tags { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 10px; }
-    .patent-tag { font-size: .72rem; border: 1px solid var(--rule); padding: 1px 8px; border-radius: 3px; color: var(--text-muted); background: #fff; }
-    .awards-grid { border-top: 1px solid var(--rule); }
-    .award-card { padding: 12px 0; border-bottom: 1px solid var(--rule); }
-    .award-card > div { display: grid; grid-template-columns: 170px 1fr; column-gap: 20px; }
-    .award-year { grid-row: 1 / span 2; font-size: .82rem; color: var(--text-muted); font-variant-numeric: tabular-nums; padding-top: 2px; }
-    .award-title { font-weight: 600; }
-    .award-org { font-size: .88rem; color: var(--text-muted); }
+/* ── Metrics ribbon + marquee ── */
+.metrics{padding:10px 0 0}
+.metrics-grid{display:grid;grid-template-columns:repeat(5,1fr);border-radius:22px;overflow:hidden;border:1px solid var(--line);background:linear-gradient(160deg,rgba(255,255,255,.08),rgba(255,255,255,.02));backdrop-filter:blur(14px);box-shadow:var(--shadow)}
+.metric{padding:26px 20px;text-align:center;border-right:1px solid var(--line)}
+.metric:last-child{border-right:0}
+.metric b{display:block;font-family:var(--serif);font-size:2.2rem;font-weight:600;line-height:1.1;background:var(--grad2);-webkit-background-clip:text;background-clip:text;color:transparent}
+.metric span{font-size:.78rem;color:var(--muted);font-weight:600;letter-spacing:.04em;text-transform:uppercase}
+.marquee{margin-top:26px;overflow:hidden;mask-image:linear-gradient(90deg,transparent,#000 10%,#000 90%,transparent)}
+.marquee-track{display:flex;gap:14px;width:max-content;animation:marquee 46s linear infinite}
+.marquee:hover .marquee-track{animation-play-state:paused}
+.marquee-item{display:flex;align-items:center;gap:10px;padding:10px 18px;border-radius:999px;white-space:nowrap;font-size:.86rem;font-weight:600;color:#d3daec;background:var(--glass);border:1px solid var(--line)}
+.marquee-item::before{content:"★";color:var(--gold);font-size:.8rem}
+@keyframes marquee{to{transform:translateX(-50%)}}
 
-    /* ── Publications ── */
-    .pub-filters { display: flex; flex-wrap: wrap; gap: 4px 18px; margin-bottom: 14px; }
-    .filter-btn { background: none; border: none; font: inherit; font-size: .86rem; color: var(--text-muted); cursor: pointer; padding: 2px 0; border-bottom: 2px solid transparent; }
-    .filter-btn:hover { color: var(--text); }
-    .filter-btn.active { color: var(--accent); border-bottom-color: var(--accent); font-weight: 600; }
-    .pub-list { counter-reset: pub; }
-    .pub-card { display: grid; grid-template-columns: 38px 1fr; gap: 10px; padding: 13px 0; border-top: 1px solid var(--rule); }
-    .pub-num { font-size: .8rem; color: var(--text-muted); font-variant-numeric: tabular-nums; padding-top: 3px; }
-    .pub-title { font-family: var(--serif); font-size: 1.04rem; font-weight: 600; line-height: 1.4; }
-    .pub-meta { font-size: .86rem; color: var(--text-muted); margin-top: 3px; }
-    .pub-badges { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 6px; }
-    .badge { font-size: .68rem; font-weight: 600; padding: 1px 7px; border-radius: 3px; border: 1px solid var(--rule); color: var(--text-dim); background: #fff; }
-    .badge-q1 { border-color: #c9d8ec; color: var(--accent); }
-    .badge-if { color: var(--text-muted); }
-    .pub-more-btn { margin-top: 14px; background: none; border: 1px solid var(--rule); padding: 7px 14px; font: inherit; font-size: .85rem; border-radius: 4px; cursor: pointer; color: var(--text-dim); }
-    .pub-more-btn:hover { border-color: var(--accent); color: var(--accent); }
+/* ── About ── */
+.about-grid{display:grid;grid-template-columns:1.35fr 1fr;gap:40px;align-items:start}
+.about-prose p{color:#c6cee3;font-size:1.06rem;margin-bottom:18px}
+.about-prose strong{color:var(--ink)}
+.about-prose a{color:var(--gold2)}
+.profile-links{display:flex;flex-wrap:wrap;gap:10px;margin-top:20px}
+.profile-link{display:inline-flex;align-items:center;gap:8px;padding:10px 16px;border-radius:12px;text-decoration:none;font-size:.86rem;font-weight:600;background:var(--glass);border:1px solid var(--line);transition:.3s}
+.profile-link:hover{border-color:rgba(243,197,107,.45);transform:translateY(-2px)}
+.profile-link svg{width:16px;height:16px;stroke:var(--gold)}
+.edu-card{padding:30px}
+.edu-card h3{font-family:var(--serif);font-weight:500;font-size:1.4rem;margin-bottom:18px}
+.edu-list{list-style:none;display:flex;flex-direction:column;gap:16px}
+.edu-item{display:flex;gap:14px;align-items:flex-start;padding-bottom:16px;border-bottom:1px dashed var(--line)}
+.edu-item:last-child{border-bottom:0;padding-bottom:0}
+.edu-deg{flex:none;min-width:54px;text-align:center;padding:6px 8px;border-radius:10px;font-size:.76rem;font-weight:800;color:#1a1204;background:var(--grad)}
+.edu-title{font-weight:700}
+.edu-detail{font-size:.88rem;color:var(--muted)}
 
-    /* ── Grants ── */
-    .grants-stats { display: grid; grid-template-columns: repeat(4, 1fr); border-top: 1px solid var(--rule); border-bottom: 1px solid var(--rule); margin-bottom: 18px; }
-    .grants-stat-card { padding: 14px 12px 12px 0; }
-    .grants-stat-card + .grants-stat-card { padding-left: 16px; border-left: 1px solid var(--rule); }
-    .grants-stat-num { display: block; font-family: var(--serif); font-size: 1.4rem; font-weight: 600; }
-    .grants-stat-label { display: block; font-size: .74rem; color: var(--text-muted); }
-    .grants-list { display: flex; flex-direction: column; }
-    .grant-item { display: grid; grid-template-columns: 58px 1fr; gap: 12px; padding: 13px 0; border-bottom: 1px solid var(--rule); }
-    .grant-role { font-size: .68rem; font-weight: 700; letter-spacing: .06em; text-align: center; height: fit-content; padding: 2px 0; border-radius: 3px; }
-    .grant-role.pi { color: #fff; background: var(--accent); }
-    .grant-role.copi { color: var(--accent); border: 1px solid var(--accent); }
-    .grant-title { font-weight: 600; font-size: .95rem; line-height: 1.45; }
-    .grant-meta { font-size: .85rem; color: var(--text-muted); margin-top: 3px; }
-    .grant-amount { color: var(--text); font-weight: 700; }
+/* ── Career timeline ── */
+.timeline{position:relative;padding-left:44px;display:flex;flex-direction:column;gap:18px}
+.timeline::before{content:"";position:absolute;left:13px;top:6px;bottom:6px;width:2px;background:var(--line)}
+.timeline::after{content:"";position:absolute;left:13px;top:6px;width:2px;height:calc(var(--fill,0)*1%);max-height:calc(100% - 12px);background:var(--grad);box-shadow:0 0 14px var(--gold);transition:height .2s linear}
+.timeline-item{padding:22px 26px}
+.timeline-dot{position:absolute;left:-39px;top:28px;width:16px;height:16px;border-radius:50%;background:var(--bg);border:3px solid var(--gold);box-shadow:0 0 0 5px rgba(243,197,107,.15),0 0 16px var(--gold);z-index:2}
+.timeline-item{overflow:visible}
+.timeline-period{display:inline-block;font-size:.75rem;font-weight:700;letter-spacing:.06em;color:var(--cyan);padding:3px 10px;border-radius:999px;background:rgba(94,225,255,.08);border:1px solid rgba(94,225,255,.25);margin-bottom:8px}
+.timeline-role{font-family:var(--serif);font-size:1.3rem;font-weight:500}
+.timeline-org{color:var(--muted);font-size:.93rem}
+.timeline-note{margin-top:6px;font-size:.86rem;color:var(--gold2)}
 
-    /* ── Gallery ── */
-    .lab-banner { display: grid; grid-template-columns: 1.4fr 1fr; gap: 24px; padding: 20px 22px; background: var(--bg-alt); border: 1px solid var(--rule); margin-bottom: 18px; }
-    .lab-banner-label { font-size: .72rem; text-transform: uppercase; letter-spacing: .12em; color: var(--text-muted); font-weight: 600; }
-    .lab-banner-title { font-family: var(--serif); font-size: 1.3rem; font-weight: 600; margin: 6px 0; line-height: 1.3; }
-    .lab-banner-title span { color: var(--accent); font-style: italic; }
-    .lab-banner-sub { font-size: .88rem; color: var(--text-dim); }
-    .lab-banner-stats { display: flex; flex-direction: column; justify-content: center; gap: 8px; }
-    .lab-banner-stat { display: flex; align-items: baseline; gap: 10px; }
-    .lab-banner-stat-num { font-family: var(--serif); font-size: 1.3rem; font-weight: 600; min-width: 96px; }
-    .lab-banner-stat-label { font-size: .8rem; color: var(--text-muted); }
-    .gallery-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; }
-    .gallery-item { position: relative; cursor: pointer; overflow: hidden; aspect-ratio: 4 / 3; background: var(--bg-alt); }
-    .gallery-item img { width: 100%; height: 100%; object-fit: cover; transition: transform .4s ease; }
-    .gallery-item:hover img { transform: scale(1.03); }
-    .gallery-overlay { position: absolute; inset: auto 0 0 0; padding: 8px 10px; background: linear-gradient(transparent, rgba(0,0,0,.6)); }
-    .gallery-caption { color: #fff; font-size: .76rem; line-height: 1.35; }
-    #lightbox { position: fixed; inset: 0; background: rgba(15,15,18,.92); display: none; align-items: center; justify-content: center; z-index: 100; }
-    #lightbox.open { display: flex; }
-    #lightbox img { max-width: 88vw; max-height: 80vh; }
-    .lightbox-close, .lightbox-nav { position: absolute; background: none; border: none; color: #fff; font-size: 2rem; cursor: pointer; padding: 10px 16px; }
-    .lightbox-close { top: 12px; right: 18px; }
-    .lb-prev { left: 12px; } .lb-next { right: 12px; }
-    .lightbox-caption { position: absolute; bottom: 24px; color: #ddd; font-size: .9rem; }
+/* ── Gallery ── */
+.lab-banner{display:grid;grid-template-columns:1.4fr 1fr;gap:30px;padding:36px;margin-bottom:22px;background:linear-gradient(120deg,rgba(59,75,255,.25),rgba(15,181,214,.12) 50%,rgba(232,150,60,.15))}
+.lab-banner-label{font-size:.72rem;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:var(--gold)}
+.lab-banner-title{font-family:var(--serif);font-size:1.9rem;line-height:1.15;margin:8px 0}
+.lab-banner-title span{background:var(--grad);-webkit-background-clip:text;background-clip:text;color:transparent;font-style:italic}
+.lab-banner-sub{color:var(--muted)}
+.lab-banner-stats{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;align-self:center}
+.lab-banner-stat{padding:16px;border-radius:14px;background:rgba(0,0,0,.25);border:1px solid var(--line);text-align:center}
+.lab-banner-stat-num{font-family:var(--serif);font-size:1.6rem;font-weight:600;background:var(--grad);-webkit-background-clip:text;background-clip:text;color:transparent}
+.lab-banner-stat-label{font-size:.74rem;color:var(--muted)}
+.gallery-grid{display:grid;grid-template-columns:repeat(4,1fr);grid-auto-rows:220px;gap:14px}
+.gallery-item{position:relative;border-radius:16px;overflow:hidden;cursor:zoom-in;border:1px solid var(--line);box-shadow:var(--shadow)}
+.gallery-item.tall{grid-row:span 2}
+.gallery-item.wide{grid-column:span 2}
+.gallery-item img{width:100%;height:100%;object-fit:cover;transition:transform 1.1s cubic-bezier(.2,.8,.2,1),filter .6s;filter:saturate(.85) brightness(.85)}
+.gallery-item:hover img{transform:scale(1.08);filter:saturate(1.1) brightness(1)}
+.gallery-overlay{position:absolute;inset:0;display:flex;align-items:flex-end;padding:18px;background:linear-gradient(180deg,transparent 45%,rgba(6,10,24,.9))}
+.gallery-caption{font-weight:600;font-size:.9rem;transform:translateY(6px);transition:transform .4s}
+.gallery-item:hover .gallery-caption{transform:none}
+#lightbox{position:fixed;inset:0;z-index:2000;display:none;align-items:center;justify-content:center;background:rgba(3,5,14,.92);backdrop-filter:blur(10px)}
+#lightbox.open{display:flex;animation:fadeIn .35s}
+@keyframes fadeIn{from{opacity:0}}
+#lbImg{max-width:88vw;max-height:80vh;border-radius:14px;box-shadow:0 30px 80px rgba(0,0,0,.8)}
+.lightbox-close,.lightbox-nav{position:absolute;width:50px;height:50px;border-radius:50%;border:1px solid var(--line2);background:rgba(255,255,255,.08);color:#fff;font-size:1.4rem;cursor:pointer;backdrop-filter:blur(10px)}
+.lightbox-close{top:24px;right:24px}.lb-prev{left:24px}.lb-next{right:24px}
+.lightbox-caption{position:absolute;bottom:28px;left:0;right:0;text-align:center;color:var(--muted)}
 
-    /* ── Technical expertise ── */
-    .tech-categories { display: grid; grid-template-columns: 1fr; }
-    .tech-group { display: grid; grid-template-columns: 170px 1fr; column-gap: 20px; padding: 12px 0; border-top: 1px solid var(--rule); }
-    .tech-group-title { font-weight: 600; font-size: .9rem; }
-    .tech-pills { display: flex; flex-wrap: wrap; gap: 4px 6px; }
-    .tech-pill { font-size: .8rem; color: var(--text-dim); }
-    .tech-pill:not(:last-child)::after { content: "·"; margin-left: 6px; color: var(--text-muted); }
+/* ── Activities ── */
+.activities-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+.activity-card{padding:26px;display:flex;flex-direction:column;gap:14px}
+.activity-header{display:flex;justify-content:space-between;gap:12px;align-items:flex-start}
+.activity-title{font-weight:700;font-size:1.04rem;line-height:1.35}
+.activity-status{flex:none;font-size:.68rem;font-weight:800;letter-spacing:.08em;text-transform:uppercase;padding:5px 10px;border-radius:999px;background:rgba(143,124,255,.15);color:#c9c0ff;border:1px solid rgba(143,124,255,.35)}
+.activity-status.active{background:rgba(91,227,161,.12);color:var(--green);border-color:rgba(91,227,161,.35)}
+.activity-desc{font-size:.9rem;color:var(--muted)}
+.activity-progress-labels{display:flex;justify-content:space-between;font-size:.76rem;color:var(--dim);font-weight:600;margin-bottom:6px}
+.activity-progress-bar{height:8px;border-radius:99px;background:rgba(255,255,255,.07);overflow:hidden}
+.activity-progress-fill{height:100%;width:0;border-radius:99px;background:var(--grad2);box-shadow:0 0 14px rgba(94,225,255,.6);transition:width 1.6s cubic-bezier(.2,.8,.2,1)}
+.activity-tags,.research-tags,.patent-tags{display:flex;flex-wrap:wrap;gap:6px;margin-top:auto}
+.tag,.patent-tag{font-size:.72rem;font-weight:600;padding:4px 10px;border-radius:999px;color:#cfd6ea;background:rgba(255,255,255,.06);border:1px solid var(--line)}
 
-    /* ── Contact ── */
-    .contact-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 32px; }
-    .contact-item { display: flex; gap: 12px; padding: 10px 0; border-bottom: 1px solid var(--rule); }
-    .contact-icon { color: var(--text-muted); padding-top: 3px; }
-    .contact-label { font-size: .72rem; text-transform: uppercase; letter-spacing: .1em; color: var(--text-muted); font-weight: 600; }
-    .contact-value { font-size: .92rem; }
-    .contact-form { display: flex; flex-direction: column; gap: 12px; }
-    .form-group label { display: block; font-size: .8rem; font-weight: 600; color: var(--text-dim); margin-bottom: 4px; }
-    .form-group input, .form-group textarea { width: 100%; font: inherit; font-size: .9rem; padding: 8px 10px; border: 1px solid var(--rule); border-radius: 4px; background: #fff; color: var(--text); }
-    .form-group input:focus, .form-group textarea:focus { outline: 2px solid var(--accent-soft); border-color: var(--accent); }
-    .form-group textarea { min-height: 110px; resize: vertical; }
-    .form-submit { align-self: flex-start; background: var(--accent); color: #fff; border: none; padding: 9px 20px; border-radius: 4px; font: inherit; font-weight: 600; font-size: .88rem; cursor: pointer; }
-    .form-submit:hover { background: #143d72; }
+/* ── Research ── */
+.research-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+.research-card{padding:32px 28px;display:flex;flex-direction:column;gap:12px;min-height:300px}
+.research-index{font-family:var(--serif);font-size:3.2rem;font-weight:600;line-height:1;background:var(--grad2);-webkit-background-clip:text;background-clip:text;color:transparent;opacity:.9}
+.research-card h3{font-family:var(--serif);font-weight:500;font-size:1.45rem}
+.research-card p{color:var(--muted);font-size:.93rem}
 
-    /* ── Footer & back-to-top ── */
-    footer { padding: 26px 0 10px; }
-    .footer-inner { max-width: 800px; display: flex; justify-content: space-between; flex-wrap: wrap; gap: 10px; }
-    .footer-copy { font-size: .8rem; color: var(--text-muted); }
-    .footer-copy span { color: var(--text-dim); }
-    .footer-links { list-style: none; display: flex; gap: 16px; }
-    .footer-links a { font-size: .8rem; color: var(--text-muted); }
-    #back-top { position: fixed; right: 22px; bottom: 22px; width: 36px; height: 36px; border-radius: 50%; border: 1px solid var(--rule); background: #fff; color: var(--text-dim); cursor: pointer; opacity: 0; pointer-events: none; transition: opacity .2s; z-index: 50; font-size: 1rem; }
-    #back-top.visible { opacity: 1; pointer-events: auto; }
+/* ── Awards ── */
+.patent-card{padding:36px;margin-bottom:18px;background:linear-gradient(125deg,rgba(243,197,107,.2),rgba(255,255,255,.04) 45%,rgba(143,124,255,.12))!important;border-color:rgba(243,197,107,.35)}
+.patent-flag{position:absolute;top:0;right:36px;display:flex;flex-direction:column;width:34px;border-radius:0 0 6px 6px;overflow:hidden}
+.patent-flag span{height:8px}
+.patent-badge{display:inline-block;font-size:.72rem;font-weight:800;letter-spacing:.12em;text-transform:uppercase;color:#1a1204;background:var(--grad);padding:6px 12px;border-radius:999px;margin-bottom:14px}
+.patent-label{color:var(--muted);font-size:.86rem}
+.patent-year{font-family:var(--serif);font-size:1.3rem;color:var(--gold2)}
+.patent-title{font-family:var(--serif);font-size:1.6rem;line-height:1.25;margin:10px 0}
+.patent-desc{color:#c6cee3;font-size:.95rem;margin-bottom:16px;max-width:860px}
+.awards-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:16px}
+.award-card{padding:26px 22px;min-height:170px}
+.award-card::marker{content:none}
+.award-year{font-size:.74rem;font-weight:700;letter-spacing:.06em;color:var(--cyan);margin-bottom:10px}
+.award-title{font-family:var(--serif);font-size:1.15rem;line-height:1.3;margin-bottom:8px}
+.award-org{font-size:.84rem;color:var(--muted)}
 
-    /* ── Responsive ── */
-    @media (max-width: 1080px) {
-      :root { --side-w: 260px; }
-      .content { padding: 36px 32px; }
-    }
-    @media (max-width: 860px) {
-      .layout { grid-template-columns: 1fr; }
-      .sidebar { position: sticky; top: 0; height: auto; z-index: 60; background: rgba(255,255,255,.97); border-right: none; border-bottom: 1px solid var(--rule); padding: 12px 20px; }
-      .side-top { flex-direction: row; align-items: center; gap: 12px; }
-      .side-photo { width: 44px; height: 44px; }
-      .side-name { font-size: 1.05rem; }
-      .side-pos, .side-inst, .side-status, .side-links { display: none; }
-      .hamburger { display: flex; flex-direction: column; gap: 4px; margin-left: auto; background: none; border: none; cursor: pointer; padding: 8px; }
-      .hamburger span { width: 20px; height: 2px; background: var(--text); transition: transform .2s, opacity .2s; }
-      .hamburger.open span:nth-child(1) { transform: translateY(6px) rotate(45deg); }
-      .hamburger.open span:nth-child(2) { opacity: 0; }
-      .hamburger.open span:nth-child(3) { transform: translateY(-6px) rotate(-45deg); }
-      .side-nav { display: none; margin: 10px 0 4px; }
-      .side-nav.open { display: block; }
-      .content { padding: 22px 20px; }
-      .hero-stats, .grants-stats { grid-template-columns: repeat(2, 1fr); }
-      .stat-item:nth-child(3), .grants-stat-card:nth-child(3) { border-left: none; padding-left: 0; }
-      .activities-grid, .research-grid, .contact-grid { grid-template-columns: 1fr; }
-      .gallery-grid { grid-template-columns: repeat(2, 1fr); }
-      .lab-banner { grid-template-columns: 1fr; }
-    }
-    @media (max-width: 520px) {
-      .timeline-item, .award-card > div, .tech-group { grid-template-columns: 1fr; }
-      .timeline-period, .award-year { grid-row: auto; }
-      .timeline-role, .timeline-org, .timeline-note { grid-column: 1; }
-      .hero-bio { font-size: 1.05rem; }
-    }
-    @media print {
-      .sidebar { position: static; height: auto; }
-      #back-top, .hamburger, .contact-form, #lightbox { display: none !important; }
-      .reveal { opacity: 1; transform: none; }
-    }
+/* ── Publications ── */
+.pub-filters{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:24px;padding:6px;border-radius:999px;background:var(--glass);border:1px solid var(--line);width:max-content;max-width:100%}
+.filter-btn{font:inherit;font-size:.84rem;font-weight:600;padding:8px 18px;border-radius:999px;border:0;background:transparent;color:var(--muted);cursor:pointer;transition:.3s}
+.filter-btn:hover{color:var(--ink)}
+.filter-btn.active{color:#1a1204;background:var(--grad);box-shadow:0 6px 18px -6px rgba(243,197,107,.7)}
+.pub-list{display:flex;flex-direction:column;gap:12px}
+.pub-card{display:flex;gap:22px;padding:22px 26px;align-items:flex-start}
+.pub-num{flex:none;font-family:var(--serif);font-size:1.8rem;font-weight:600;line-height:1;min-width:44px;background:var(--grad);-webkit-background-clip:text;background-clip:text;color:transparent}
+.pub-title{font-weight:700;font-size:1.02rem;line-height:1.4}
+.pub-meta{color:var(--muted);font-size:.86rem;margin:4px 0 10px}
+.pub-badges{display:flex;flex-wrap:wrap;gap:6px}
+.badge{font-size:.7rem;font-weight:800;letter-spacing:.04em;padding:4px 10px;border-radius:8px;border:1px solid var(--line)}
+.badge-q1{color:var(--green);background:rgba(91,227,161,.1);border-color:rgba(91,227,161,.3)}
+.badge-if{color:var(--gold2);background:rgba(243,197,107,.1);border-color:rgba(243,197,107,.3)}
+[class*="badge-"]:not(.badge-q1):not(.badge-if){color:#c9c0ff;background:rgba(143,124,255,.12);border-color:rgba(143,124,255,.3)}
+.pub-more-btn{margin-top:26px;display:inline-flex;align-items:center;gap:10px;font:inherit;font-weight:700;font-size:.92rem;padding:14px 26px;border-radius:999px;color:var(--ink);background:rgba(255,255,255,.06);border:1px solid var(--line2);cursor:pointer;transition:.3s}
+.pub-more-btn:hover{background:rgba(255,255,255,.12);transform:translateY(-2px)}
+.pub-more-btn svg{width:16px;height:16px;stroke:var(--gold)}
 
-  </style>
+/* ── Grants ── */
+.grants-stats{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin-bottom:22px}
+.grants-stat-card{padding:24px;text-align:center}
+.grants-stat-num{display:block;font-family:var(--serif);font-size:2.1rem;font-weight:600;background:var(--grad);-webkit-background-clip:text;background-clip:text;color:transparent}
+.grants-stat-label{font-size:.8rem;color:var(--muted);font-weight:600}
+.grants-list{display:flex;flex-direction:column;gap:12px}
+.grant-item{display:flex;gap:18px;padding:20px 24px;align-items:flex-start}
+.grant-role{flex:none;font-size:.74rem;font-weight:800;padding:6px 10px;border-radius:10px;color:#c9c0ff;background:rgba(143,124,255,.15);border:1px solid rgba(143,124,255,.35);min-width:48px;text-align:center}
+.grant-role.pi{color:#1a1204;background:var(--grad);border-color:transparent}
+.grant-title{font-weight:700;line-height:1.4}
+.grant-meta{font-size:.86rem;color:var(--muted);margin-top:4px}
+.grant-amount{color:var(--gold2);font-weight:700}
+
+/* ── Tech ── */
+.tech-categories{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+.tech-group{padding:26px}
+.tech-group-title{font-family:var(--serif);font-size:1.2rem;margin-bottom:14px}
+.tech-pills{display:flex;flex-wrap:wrap;gap:8px}
+.tech-pill{font-size:.8rem;font-weight:600;padding:7px 13px;border-radius:10px;background:rgba(255,255,255,.05);border:1px solid var(--line);transition:.25s}
+.tech-pill:hover{color:#1a1204;background:var(--gold);border-color:var(--gold);transform:translateY(-2px)}
+
+/* ── Contact ── */
+.contact-grid{display:grid;grid-template-columns:1fr 1.2fr;gap:22px}
+.contact-info{padding:30px;display:flex;flex-direction:column;gap:22px}
+.contact-item{display:flex;gap:16px;align-items:flex-start}
+.contact-icon{flex:none;width:46px;height:46px;border-radius:14px;display:grid;place-items:center;background:linear-gradient(140deg,rgba(243,197,107,.25),rgba(243,197,107,.05));border:1px solid rgba(243,197,107,.35)}
+.contact-icon svg{width:20px;height:20px;stroke:var(--gold)}
+.contact-label{font-size:.72rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--dim)}
+.contact-value{font-weight:600}
+.contact-value a{color:var(--gold2);text-decoration:none}
+.contact-form{padding:30px;display:flex;flex-direction:column;gap:16px}
+.form-group{display:flex;flex-direction:column;gap:6px}
+.form-group label{font-size:.8rem;font-weight:700;color:var(--muted)}
+.form-group input,.form-group textarea{font:inherit;color:var(--ink);padding:13px 16px;border-radius:12px;background:rgba(0,0,0,.25);border:1px solid var(--line);transition:.25s;outline:none}
+.form-group textarea{min-height:130px;resize:vertical}
+.form-group input:focus,.form-group textarea:focus{border-color:rgba(243,197,107,.6);box-shadow:0 0 0 4px rgba(243,197,107,.12)}
+.form-group input::placeholder,.form-group textarea::placeholder{color:#5d6787}
+.form-submit{position:relative;overflow:hidden;font:inherit;font-weight:800;font-size:.95rem;padding:15px;border-radius:14px;border:0;cursor:pointer;color:#1a1204;background:var(--grad);box-shadow:0 14px 34px -12px rgba(243,197,107,.75);transition:.3s}
+.form-submit:hover{transform:translateY(-2px)}
+
+/* ── Footer ── */
+footer{margin-top:90px;border-top:1px solid var(--line);background:rgba(4,7,18,.6);backdrop-filter:blur(10px)}
+.footer-inner{width:min(1180px,calc(100% - 48px));margin:0 auto;padding:30px 0;display:flex;justify-content:space-between;align-items:center;gap:20px;flex-wrap:wrap}
+.footer-copy{color:var(--muted);font-size:.88rem}
+.footer-copy span{color:var(--ink);font-weight:600}
+.footer-links{list-style:none;display:flex;gap:20px;flex-wrap:wrap}
+.footer-links a{color:var(--muted);text-decoration:none;font-size:.86rem;transition:.25s}
+.footer-links a:hover{color:var(--gold)}
+
+/* ── Responsive ── */
+@media (max-width:1100px){
+  .nav-links a{padding:8px 9px;font-size:.82rem}
+  .awards-grid{grid-template-columns:repeat(2,1fr)}
+  .metrics-grid{grid-template-columns:repeat(3,1fr)}
+  .metric:nth-child(3){border-right:0}
+  .metric:nth-child(n+4){border-top:1px solid var(--line)}
+}
+@media (max-width:960px){
+  .hamburger{display:flex}
+  .nav-links{position:absolute;top:calc(100% + 10px);left:0;right:0;flex-direction:column;align-items:stretch;padding:12px;border-radius:22px;background:rgba(8,12,28,.95);backdrop-filter:blur(18px);border:1px solid var(--line);opacity:0;pointer-events:none;transform:translateY(-8px);transition:.3s}
+  .nav-links.open{opacity:1;pointer-events:auto;transform:none}
+  .nav-links a{padding:12px 16px;font-size:.95rem}
+  .nav-links a.nav-cta{margin:6px 0 0;text-align:center}
+  .hero-grid{grid-template-columns:1fr;gap:40px;text-align:center}
+  .hero-bio{margin-left:auto;margin-right:auto}
+  .hero-stats{margin-left:auto;margin-right:auto}
+  .hero-actions{justify-content:center}
+  .about-grid,.contact-grid,.lab-banner{grid-template-columns:1fr}
+  .activities-grid,.research-grid,.tech-categories{grid-template-columns:1fr 1fr}
+  .gallery-grid{grid-template-columns:repeat(2,1fr)}
+  .grants-stats{grid-template-columns:repeat(2,1fr)}
+}
+@media (max-width:640px){
+  section{padding:90px 0 20px}
+  .hero-stats{grid-template-columns:repeat(2,1fr)}
+  .activities-grid,.research-grid,.tech-categories,.awards-grid{grid-template-columns:1fr}
+  .metrics-grid{grid-template-columns:repeat(2,1fr)}
+  .metric{border-right:0!important;border-top:1px solid var(--line)}
+  .metric:first-child{grid-column:span 2;border-top:0}
+  .gallery-grid{grid-auto-rows:160px}
+  .gallery-item.wide{grid-column:span 2}
+  .pub-card,.grant-item{flex-direction:column;gap:10px}
+  .orbit-badge.b1{right:-4%}.orbit-badge.b2{left:-6%}
+  .lab-banner-stats{grid-template-columns:repeat(3,1fr)}
+  .patent-card{padding:28px 22px}
+  .pub-filters{border-radius:18px}
+}
+@media (prefers-reduced-motion:reduce){
+  *,*::before,*::after{animation:none!important;transition:none!important}
+  .reveal{opacity:1;transform:none;filter:none}
+  #heroNet{display:none}
+}
+/* fixes */
+.nav-links a.nav-cta{position:relative;overflow:hidden}
+.stat-num,.lab-banner-stat-num,.grants-stat-num{white-space:nowrap}
+.stat-num{font-size:clamp(1.35rem,2.1vw,1.9rem)}
+.lab-banner-stat-num{font-size:clamp(1.15rem,1.8vw,1.6rem)}
+.contact-value[style],.contact-value [style]{color:var(--muted)!important}
+.contact-item div[style]{color:var(--muted)!important}
+.gallery-item{background:linear-gradient(135deg,#18224a,#0d1a33 60%,#2a1d12)}
+
+</style>
 </head>
-<body>
-<button id="back-top" aria-label="Back to top" onclick="window.scrollTo({top:0,behavior:'smooth'})">&#8593;</button>
-<div class="layout">
-<aside class="sidebar" aria-label="Profile">
-  <div class="side-inner">
-    <div class="side-top">
-      <img class="side-photo" src="../photo.webp" alt="Portrait of Dr. Mohammad Kamrul Hasan" />
-      <div class="side-id">
-        <h1 class="side-name">Dr. Mohammad Kamrul Hasan</h1>
-        <p class="side-pos">Associate Professor · Center for Cyber Security</p>
-        <p class="side-inst">Faculty of Information Science &amp; Technology, Universiti Kebangsaan Malaysia (UKM)</p>
-      </div>
-      <button class="hamburger" id="hamburger" aria-label="Toggle menu" aria-expanded="false"><span></span><span></span><span></span></button>
-    </div>
-    <p class="side-status">Top 2% Scientist Worldwide · Stanford/Elsevier 2021–2026</p>
-    <nav aria-label="Sections"><ul class="side-nav" id="navLinks"><li><a href="#hero">Overview</a></li><li><a href="#about">About</a></li><li><a href="#career">Career</a></li><li><a href="#activities">Activities</a></li><li><a href="#research">Research</a></li><li><a href="#awards">Awards</a></li><li><a href="#publications">Publications</a></li><li><a href="#grants">Grants</a></li><li><a href="#gallery">Gallery</a></li><li><a href="#techstack">Expertise</a></li><li><a href="#contact">Contact</a></li></ul></nav>
-    <ul class="side-links"><li><a class="hero-quick-link" href="https://ukmsarjana.ukm.my/main/lihat_profil/SzAyMzIwOA==" rel="noopener" target="_blank">
+<body><div aria-hidden="true" class="aurora"><i></i><i></i><i></i></div><div aria-hidden="true" class="gridlines"></div><div aria-hidden="true" class="grain"></div><div aria-hidden="true" id="cursorGlow"></div><div aria-hidden="true" id="progress"></div>
+<!-- Back to top -->
+<button aria-label="Back to top" id="back-top" onclick="window.scrollTo({top:0,behavior:'smooth'})">
+<svg fill="none" height="14" stroke="currentColor" stroke-width="2.5" viewbox="0 0 24 24" width="14"><path d="M18 15l-6-6-6 6"></path></svg>
+</button>
+<!-- ═══ NAVBAR ══════════════════════════════════════════════ -->
+<nav aria-label="Main navigation" id="navbar" role="navigation">
+<div class="nav-inner">
+<a class="nav-logo" href="#hero">Dr. Kamrul Hasan</a>
+<ul class="nav-links" id="navLinks">
+<li><a href="#about">About</a></li>
+<li><a href="#career">Career</a></li>
+<li><a href="#gallery">Gallery</a></li>
+<li><a href="#activities">Activities</a></li>
+<li><a href="#research">Research</a></li>
+<li><a href="#awards">Awards</a></li><li><a href="#publications">Publications</a></li>
+<li><a href="#grants">Grants</a></li>
+<li><a href="https://kamrul-ukm.github.io/International-Guest-Lecture-Federated-Learning/">Lecture</a></li><li><a class="nav-cta" href="#contact">Contact</a></li>
+</ul>
+<button aria-expanded="false" aria-label="Toggle menu" class="hamburger" id="hamburger">
+<span></span><span></span><span></span>
+</button>
+</div>
+</nav>
+<!-- ═══ HERO ═══════════════════════════════════════════════ -->
+<section id="hero"><canvas aria-hidden="true" id="heroNet"></canvas>
+<div class="page-wrap">
+<div class="hero-grid">
+<!-- Photo column -->
+<div class="hero-photo-col reveal">
+<div class="hero-photo">
+<img alt="Portrait of Dr. Mohammad Kamrul Hasan" src="../photo.webp"/>
+<span aria-hidden="true" class="gloss"></span><div class="orbit-badge b1"><b>Top 2%</b> Scientist · 2021–2026</div><div class="orbit-badge b2"><b>h-index 70</b> Google Scholar</div><div class="orbit-badge b3">IEEE <b>Senior Member</b></div></div>
+<div class="hero-quick-links">
+<a class="hero-quick-link" href="https://ukmsarjana.ukm.my/main/lihat_profil/SzAyMzIwOA==" rel="noopener" target="_blank">
 <svg fill="none" height="12" stroke="currentColor" stroke-width="2" viewbox="0 0 24 24" width="12"><circle cx="12" cy="12" r="10"></circle><path d="M2 12h20M12 2a15 15 0 010 20M12 2a15 15 0 000 20"></path></svg>
             UKM Profile
-          </a></li><li><a class="hero-quick-link" href="#" rel="noopener" target="_blank">
+          </a>
+<a class="hero-quick-link" href="#" rel="noopener" target="_blank">
 <svg fill="none" height="12" stroke="currentColor" stroke-width="2" viewbox="0 0 24 24" width="12"><path d="M10 13a5 5 0 007.54.54l3-3a5 5 0 00-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 00-7.54-.54l-3 3a5 5 0 007.07 7.07l1.71-1.71"></path></svg>
             Google Scholar
-          </a></li><li><a class="hero-quick-link" href="https://scholar.google.com/citations?user=IAybniwAAAAJ" rel="noopener" target="_blank">
+          </a>
+<a class="hero-quick-link" href="https://scholar.google.com/citations?user=IAybniwAAAAJ" rel="noopener" target="_blank">
 <svg fill="none" height="12" stroke="currentColor" stroke-width="2" viewbox="0 0 24 24" width="12"><path d="M10 13a5 5 0 007.54.54l3-3a5 5 0 00-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 00-7.54-.54l-3 3a5 5 0 007.07 7.07l1.71-1.71"></path></svg>
             Scopus
-          </a></li><li><a class="hero-quick-link" href="#" rel="noopener" target="_blank">
+          </a>
+<a class="hero-quick-link" href="#" rel="noopener" target="_blank">
 <svg fill="none" height="12" stroke="currentColor" stroke-width="2" viewbox="0 0 24 24" width="12"><path d="M10 13a5 5 0 007.54.54l3-3a5 5 0 00-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 00-7.54-.54l-3 3a5 5 0 007.07 7.07l1.71-1.71"></path></svg>
             ResearchGate
-          </a></li><li><a class="hero-quick-link" href="mailto:mkhasan@ukm.edu.my">
+          </a>
+<a class="hero-quick-link" href="mailto:mkhasan@ukm.edu.my">
 <svg fill="none" height="12" stroke="currentColor" stroke-width="2" viewbox="0 0 24 24" width="12"><path d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path></svg>
             mkhasan@ukm.edu.my
-          </a></li><li><a href="https://kamrul-ukm.github.io/International-Guest-Lecture-Federated-Learning/">Guest lecture: Federated Learning</a></li></ul>
-  </div>
-</aside>
-<main class="content">
-<section id="hero">
-  <div class="section-wrap">
-    <span class="section-label">Overview</span>
-    <p class="hero-bio">
+          </a>
+<a class="hero-quick-link" href="https://kamrul-ukm.github.io/International-Guest-Lecture-Federated-Learning/"><svg fill="none" stroke-width="2" viewbox="0 0 24 24"><path d="M2 7l10-4 10 4-10 4z"></path><path d="M6 9v5c0 2 3 3 6 3s6-1 6-3V9"></path></svg>FL Guest Lecture</a></div>
+</div>
+<!-- Bio column -->
+<div class="hero-bio-col">
+<div class="hero-status reveal">
+<div class="hero-status-dot"></div>
+          Top 2% Scientist Worldwide · Stanford/Elsevier 2021–2026
+        </div>
+<h1 class="hero-name reveal"><span class="shine">Dr. Mohammad Kamrul Hasan</span></h1>
+<p class="hero-position reveal">Associate Professor · Center for Cyber Security</p>
+<p class="hero-institution reveal">Faculty of Information Science &amp; Technology, Universiti Kebangsaan Malaysia (UKM)</p><p class="hero-typed reveal">Advancing <span class="tw" data-words='["federated learning", "smart-grid cybersecurity", "privacy-preserving AI", "5G/6G networks", "IoT &amp; IIoT security", "blockchain trust"]'></span><span class="caret"></span></p>
+<p class="hero-bio reveal">
           Cybersecurity and AI researcher at the intersection of smart grids, federated learning, IoT security, and 5G/6G networks. Head of the Network &amp; Communication Technology Lab at UKM Malaysia. Recognized five consecutive years by Stanford &amp; Elsevier as a Top 2% Scientist worldwide.
         </p>
-    <div class="hero-stats reveal">
+<div class="hero-stats reveal">
 <div class="stat-item">
 <span class="stat-num counter" data-target="186">0</span>
 <span class="stat-label">Q1 &amp; Q2 Publications</span>
@@ -338,7 +463,7 @@
 <span class="stat-label">PhD Students</span>
 </div>
 </div>
-    <div class="hero-actions reveal">
+<div class="hero-actions reveal">
 <a class="btn-primary" href="#publications">
 <svg aria-hidden="true" fill="none" height="14" stroke="currentColor" stroke-width="2" viewbox="0 0 24 24" width="14"><path d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"></path></svg>
             View Publications
@@ -348,12 +473,26 @@
             Collaborate
           </a>
 </div>
-  </div>
+</div>
+</div>
+</div>
+<a aria-label="Scroll down" class="scroll-cue" href="#metrics"></a></section><section aria-label="Research impact" class="metrics" id="metrics">
+<div class="section-wrap">
+<div class="metrics-grid reveal">
+<div class="metric"><b class="counter" data-suffix="+" data-target="16280">0</b><span>Citations</span></div>
+<div class="metric"><b class="counter" data-target="70">0</b><span>h-index</span></div>
+<div class="metric"><b class="counter" data-target="197">0</b><span>i10-index</span></div>
+<div class="metric"><b class="counter" data-suffix="+" data-target="344">0</b><span>Publications</span></div>
+<div class="metric"><b>3.59</b><span>Scopus FWCI</span></div>
+</div>
+<div aria-label="Recognition" class="marquee reveal"><div class="marquee-track"><span class="marquee-item">Top 2% Scientist · Stanford/Elsevier 2021–2026</span><span class="marquee-item">World's Top 5% Scientist · SciRank 2025</span><span class="marquee-item">#7 in Malaysia · Best CS Scientists 2026 (Research.com)</span><span class="marquee-item">Top Cited Scholar 2026 · SciLit</span><span class="marquee-item">IEEE Senior Member</span><span class="marquee-item">Associate Editor · Artificial Intelligence Review (Springer)</span><span class="marquee-item">Associate Editor · Journal of Engineering Research</span><span class="marquee-item">Guest Editor · IEEE Transactions on Consumer Electronics</span><span class="marquee-item">Utility Patent · DPMA Germany 2025</span><span class="marquee-item">MBOT Certified Professional Technologist</span><span class="marquee-item">Top 2% Scientist · Stanford/Elsevier 2021–2026</span><span class="marquee-item">World's Top 5% Scientist · SciRank 2025</span><span class="marquee-item">#7 in Malaysia · Best CS Scientists 2026 (Research.com)</span><span class="marquee-item">Top Cited Scholar 2026 · SciLit</span><span class="marquee-item">IEEE Senior Member</span><span class="marquee-item">Associate Editor · Artificial Intelligence Review (Springer)</span><span class="marquee-item">Associate Editor · Journal of Engineering Research</span><span class="marquee-item">Guest Editor · IEEE Transactions on Consumer Electronics</span><span class="marquee-item">Utility Patent · DPMA Germany 2025</span><span class="marquee-item">MBOT Certified Professional Technologist</span></div></div>
+</div>
 </section>
+<!-- ═══ ABOUT ══════════════════════════════════════════════ -->
 <section id="about">
 <div class="section-wrap">
 <span class="section-label reveal">About</span>
-<h2 class="section-heading reveal">Research Overview</h2>
+<h2 class="section-heading reveal">Research <em>Overview</em></h2>
 <div class="about-grid">
 <div class="about-prose reveal">
 <p>I am <strong>Assoc. Prof. Dr. Mohammad Kamrul Hasan</strong>, a cybersecurity and artificial intelligence researcher at the <strong>Center for Cyber Security, Faculty of Information Science and Technology, Universiti Kebangsaan Malaysia (UKM)</strong>.</p>
@@ -373,7 +512,7 @@
 </div>
 </div>
 <div class="reveal reveal-delay-2">
-<div class="edu-card">
+<div class="edu-card spot">
 <h3>Education</h3>
 <ul class="edu-list">
 <li class="edu-item">
@@ -408,462 +547,52 @@
 </div>
 </div>
 </div>
-</section><section id="career">
+</section>
+<!-- ═══ CAREER TIMELINE ════════════════════════════════════ -->
+<section id="career">
 <div class="section-wrap">
 <span class="section-label reveal">Experience</span>
-<h2 class="section-heading reveal">Career Timeline</h2>
+<h2 class="section-heading reveal">Career <em>Timeline</em></h2>
 <p class="section-sub reveal">Two decades of academic, research, and industry experience across Malaysia and beyond.</p>
 <div class="timeline">
-<div class="timeline-item reveal">
+<div class="timeline-item reveal spot">
 <div aria-hidden="true" class="timeline-dot"></div>
 <span class="timeline-period">June 2023 – Present</span>
 <div class="timeline-role">Associate Professor (DS54)</div>
 <div class="timeline-org">Center for Cyber Security, FTSM · Universiti Kebangsaan Malaysia (UKM)</div>
 <div class="timeline-note">Head of Lab — Network &amp; Communication Technology</div>
 </div>
-<div class="timeline-item reveal reveal-delay-1">
+<div class="timeline-item reveal reveal-delay-1 spot">
 <div aria-hidden="true" class="timeline-dot"></div>
 <span class="timeline-period">Nov 2019 – May 2023</span>
 <div class="timeline-role">Senior Lecturer (DS51)</div>
 <div class="timeline-org">Center for Cyber Security · Universiti Kebangsaan Malaysia (UKM)</div>
 </div>
-<div class="timeline-item reveal reveal-delay-2">
+<div class="timeline-item reveal reveal-delay-2 spot">
 <div aria-hidden="true" class="timeline-dot"></div>
 <span class="timeline-period">Jul 2017 – Nov 2019</span>
 <div class="timeline-role">Postdoctoral Research Fellow</div>
 <div class="timeline-org">Universiti Malaysia Sarawak (UNIMAS) &amp; Sarawak Energy Berhad (SEB)</div>
 </div>
-<div class="timeline-item reveal reveal-delay-3">
+<div class="timeline-item reveal reveal-delay-3 spot">
 <div aria-hidden="true" class="timeline-dot"></div>
 <span class="timeline-period">Dec 2016 – Jun 2017</span>
 <div class="timeline-role">Postdoctoral Research Fellow</div>
 <div class="timeline-org">Department of Electrical &amp; Computer Engineering · IIUM</div>
 </div>
-<div class="timeline-item reveal">
+<div class="timeline-item reveal spot">
 <div aria-hidden="true" class="timeline-dot"></div>
 <span class="timeline-period">Apr 2004 – May 2009</span>
 <div class="timeline-role">Manager — Computer &amp; Automation Engineer</div>
 </div>
 </div>
 </div>
-</section><section id="activities">
-<div class="section-wrap">
-<span class="section-label reveal">What's Happening</span>
-<h2 class="section-heading reveal">Ongoing Activities</h2>
-<p class="section-sub reveal">Active research projects, grant proposals, and current lab pursuits.</p>
-<div class="activities-grid">
-<div class="activity-card reveal">
-<div class="activity-header">
-<div class="activity-title">GRIDTRUST — Federated AI for Smart Energy</div>
-<span class="activity-status active">Active</span>
-</div>
-<div class="activity-desc">Developing federated learning + cyber range testing framework for explainable, secure smart energy infrastructure. British Council UK grant under evaluation.</div>
-<div class="activity-progress-wrap">
-<div class="activity-progress-labels"><span>Progress</span><span>65%</span></div>
-<div class="activity-progress-bar"><div class="activity-progress-fill" data-width="65"></div></div>
-</div>
-<div class="activity-tags">
-<span class="tag">Federated Learning</span><span class="tag">Smart Grid</span><span class="tag">UK Collab</span>
-</div>
-</div>
-<div class="activity-card reveal reveal-delay-1">
-<div class="activity-header">
-<div class="activity-title">TUBITAK-MIGHT — AI Breast Cancer Detection</div>
-<span class="activity-status active">Active</span>
-</div>
-<div class="activity-desc">Turkey–Malaysia bilateral grant powering AI-driven mitosis detection in breast cancer histopathology slides using deep learning. MYR 425K project (2024–2026).</div>
-<div class="activity-progress-wrap">
-<div class="activity-progress-labels"><span>Progress</span><span>50%</span></div>
-<div class="activity-progress-bar"><div class="activity-progress-fill" data-width="50"></div></div>
-</div>
-<div class="activity-tags">
-<span class="tag">AI Healthcare</span><span class="tag">Deep Learning</span><span class="tag">Turkey</span>
-</div>
-</div>
-<div class="activity-card reveal reveal-delay-2">
-<div class="activity-header">
-<div class="activity-title">Generative-AI Blockchain IoT for Manufacturing</div>
-<span class="activity-status submitted">Submitted</span>
-</div>
-<div class="activity-desc">Proposed MYR 1.6M MOSTI Strategic Grant for Gen-AI and cryptographic blockchain-based federated learning IoT system for smart manufacturing environments.</div>
-<div class="activity-progress-wrap">
-<div class="activity-progress-labels"><span>Review Stage</span><span>30%</span></div>
-<div class="activity-progress-bar"><div class="activity-progress-fill" data-width="30"></div></div>
-</div>
-<div class="activity-tags">
-<span class="tag">Gen-AI</span><span class="tag">Blockchain</span><span class="tag">Manufacturing</span>
-</div>
-</div>
-<div class="activity-card reveal">
-<div class="activity-header">
-<div class="activity-title">6G RIS-Assisted Smart Meter Communication</div>
-<span class="activity-status active">Active</span>
-</div>
-<div class="activity-desc">Real-time monitoring of 6G mobile network communication protocols using reconfigurable intelligent surfaces (RIS) and IoT for advanced metering infrastructure.</div>
-<div class="activity-progress-wrap">
-<div class="activity-progress-labels"><span>Progress</span><span>75%</span></div>
-<div class="activity-progress-bar"><div class="activity-progress-fill" data-width="75"></div></div>
-</div>
-<div class="activity-tags">
-<span class="tag">6G</span><span class="tag">RIS</span><span class="tag">IoT</span>
-</div>
-</div>
-<div class="activity-card reveal reveal-delay-1">
-<div class="activity-header">
-<div class="activity-title">LLM Security &amp; Post-Quantum Auth Protocols</div>
-<span class="activity-status active">Active</span>
-</div>
-<div class="activity-desc">Investigating AI-enabled adversarial-attack-resistant post-quantum authentication protocols for consumer electronics — published IEEE Trans. Consumer Electronics 2026.</div>
-<div class="activity-progress-wrap">
-<div class="activity-progress-labels"><span>Progress</span><span>90%</span></div>
-<div class="activity-progress-bar"><div class="activity-progress-fill" data-width="90"></div></div>
-</div>
-<div class="activity-tags">
-<span class="tag">Post-Quantum</span><span class="tag">LLM</span><span class="tag">Security</span>
-</div>
-</div>
-<div class="activity-card reveal reveal-delay-2">
-<div class="activity-header">
-<div class="activity-title">PhD Student Supervision — 2025 Cohort</div>
-<span class="activity-status review">Ongoing</span>
-</div>
-<div class="activity-desc">Actively supervising multiple PhD and MSc candidates in cybersecurity, AI/ML for networks, IoT security, and smart grid topics. Open to new co-supervision proposals.</div>
-<div class="activity-progress-wrap">
-<div class="activity-progress-labels"><span>Capacity</span><span>Active</span></div>
-<div class="activity-progress-bar"><div class="activity-progress-fill" data-width="60"></div></div>
-</div>
-<div class="activity-tags">
-<span class="tag">PhD</span><span class="tag">MSc</span><span class="tag">Supervision</span>
-</div>
-</div>
-</div>
-</div>
-</section><section id="research">
-<div class="section-wrap">
-<span class="section-label reveal">Expertise</span>
-<h2 class="section-heading reveal">Research Areas</h2>
-<p class="section-sub reveal">Advancing security and intelligence across critical infrastructure, wireless networks, and AI systems.</p>
-<div class="research-grid">
-<div class="research-card reveal">
-<span class="research-index">No. 01</span>
-<h3>Cybersecurity &amp; Smart Grid</h3>
-<p>Comprehensive cyber-physical security frameworks protecting smart grid infrastructure from advanced persistent threats and zero-day exploits.</p>
-<div class="research-tags"><span class="tag">Smart Grid</span><span class="tag">ICS Security</span><span class="tag">SCADA</span></div>
-</div>
-<div class="research-card reveal reveal-delay-1">
-<span class="research-index">No. 02</span>
-<h3>AI &amp; Federated Learning</h3>
-<p>Privacy-preserving distributed machine learning for IoT and industrial networks, combining federated learning with blockchain cryptography.</p>
-<div class="research-tags"><span class="tag">Federated Learning</span><span class="tag">Deep Learning</span><span class="tag">LLM</span></div>
-</div>
-<div class="research-card reveal reveal-delay-2">
-<span class="research-index">No. 03</span>
-<h3>5G/6G Network Security</h3>
-<p>Resource allocation, interference mitigation, and handover optimization with security-first architecture for next-generation mobile networks.</p>
-<div class="research-tags"><span class="tag">5G/6G</span><span class="tag">LTE-A</span><span class="tag">RIS</span></div>
-</div>
-<div class="research-card reveal">
-<span class="research-index">No. 04</span>
-<h3>IoMT &amp; Healthcare Security</h3>
-<p>Secure protocols and lightweight authentication for Internet of Medical Things devices, protecting patient privacy in telehealth systems.</p>
-<div class="research-tags"><span class="tag">IoMT</span><span class="tag">Healthcare</span><span class="tag">Privacy</span></div>
-</div>
-<div class="research-card reveal reveal-delay-1">
-<span class="research-index">No. 05</span>
-<h3>Blockchain &amp; Cryptography</h3>
-<p>AES cryptographic blockchain systems and quantum-resistant post-quantum protocols for securing industrial data and supply chain integrity.</p>
-<div class="research-tags"><span class="tag">Blockchain</span><span class="tag">Post-Quantum</span><span class="tag">AES</span></div>
-</div>
-<div class="research-card reveal reveal-delay-2">
-<span class="research-index">No. 06</span>
-<h3>IoT &amp; Industrial Networks</h3>
-<p>End-to-end IoT security frameworks for smart manufacturing, warehouse management, and Industry 4.0 ecosystem integration.</p>
-<div class="research-tags"><span class="tag">IoT</span><span class="tag">Industry 4.0</span><span class="tag">AIoT</span></div>
-</div>
-</div>
-</div>
-</section><section id="awards">
-<div class="section-wrap">
-<span class="section-label reveal">Recognition</span>
-<h2 class="section-heading reveal">Awards, Patents &amp; Honours</h2>
-<p class="section-sub reveal">Global recognition in research excellence, intellectual property, and citation impact.</p>
-<!-- Germany Patent -->
-<div class="patent-card reveal">
-<div aria-hidden="true" class="patent-flag">
-<span style="background:#000"></span>
-<span style="background:#D00"></span>
-<span style="background:#FFCE00"></span>
-</div>
-<div class="patent-badge">Utility Patent · Germany</div>
-<div class="patent-meta">
-<div>
-<div class="patent-label">Deutsches Patent- und Markenamt (DPMA)</div>
-<div class="patent-year">2025</div>
-</div>
-</div>
-<div class="patent-title">Deep-Federated Advanced Metering System for Optimizing Data Security in Smart Grids</div>
-<div class="patent-desc">A utility patent granted by the German Patent and Trade Mark Office (DPMA) for a novel deep federated learning architecture enabling privacy-preserving, secure data communication in advanced metering infrastructure within smart grid networks.</div>
-<div class="patent-tags">
-<span class="patent-tag">Federated Learning</span>
-<span class="patent-tag">Smart Grid Security</span>
-<span class="patent-tag">AMI Systems</span>
-<span class="patent-tag">Data Privacy</span>
-</div>
-</div>
-<div class="awards-grid">
-<div class="award-card reveal">
-<div>
-<div class="award-year">2021 – 2026</div>
-<div class="award-title">Top 2% Scientist in the World</div>
-<div class="award-org">Stanford University &amp; Elsevier</div>
-</div>
-</div>
-<div class="award-card reveal reveal-delay-1">
-<div>
-<div class="award-year">2022 – 2026</div>
-<div class="award-title">Top 1% Journal Publications</div>
-<div class="award-org">Web of Science / Clarivate Analytics</div>
-</div>
-</div>
-<div class="award-card reveal reveal-delay-2">
-<div>
-<div class="award-year">2023 – 2025</div>
-<div class="award-title">Highly Cited Author Award</div>
-<div class="award-org">Universiti Kebangsaan Malaysia</div>
-</div>
-</div>
-<div class="award-card reveal reveal-delay-3">
-<div>
-<div class="award-year">2023 – 2025</div>
-<div class="award-title">Research Excellence Award</div>
-<div class="award-org">MyRA (Malaysia Research Assessment), UKM</div>
-</div>
-</div>
-<div class="award-card reveal">
-<div>
-<div class="award-year">IEEE 2022</div>
-<div class="award-title">Best Paper Award — AI in Cybersecurity</div>
-<div class="award-org">2nd Int'l Conference on AI in Cybersecurity (ICAIC), Texas, USA</div>
-</div>
-</div>
-<div class="award-card reveal reveal-delay-1">
-<div>
-<div class="award-year">2018</div>
-<div class="award-title">Best Paper Award — InTEX18</div>
-<div class="award-org">UNIMAS Innovation &amp; Technology Exposition, Kuching</div>
-</div>
-</div>
-<div class="award-card reveal reveal-delay-2">
-<div>
-<div class="award-year">2016</div>
-<div class="award-title">Young Scientist Award</div>
-<div class="award-org">ICGCET'16, Aalborg University, Denmark</div>
-</div>
-</div>
-<div class="award-card reveal reveal-delay-3">
-<div>
-<div class="award-year">2013 – 2016</div>
-<div class="award-title">PhD International Scholarship (MIS)</div>
-<div class="award-org">Ministry of Higher Education, Malaysia</div>
-</div>
-</div>
-</div>
-</div>
-</section><section id="publications">
-<div class="section-wrap">
-<span class="section-label reveal">Impact</span>
-<h2 class="section-heading reveal">Selected Publications</h2>
-<p class="section-sub reveal">High-impact publications in Q1 journals — IEEE, Nature, Elsevier, ACM, and Springer.</p>
-<div class="pub-filters reveal">
-<button class="filter-btn active" onclick="filterPubs('all',this)">All</button>
-<button class="filter-btn" onclick="filterPubs('ieee',this)">IEEE</button>
-<button class="filter-btn" onclick="filterPubs('nature',this)">Nature</button>
-<button class="filter-btn" onclick="filterPubs('elsevier',this)">Elsevier</button>
-<button class="filter-btn" onclick="filterPubs('acm',this)">ACM</button>
-<button class="filter-btn" onclick="filterPubs('springer',this)">Springer</button>
-</div>
-<div class="pub-list" id="pubList">
-<div class="pub-card reveal" data-cat="nature">
-<div class="pub-num">01</div>
-<div class="pub-content">
-<div class="pub-title">A Dual-Branch Graph Neural Network Architecture for Drug-Target Binding Affinity Prediction</div>
-<div class="pub-meta">Khushnood Abbas, Chen Hao, Mohammad Kamrul Hasan et al. · Scientific Reports · 2026</div>
-<div class="pub-badges"><span class="badge badge-q1">Q1</span><span class="badge badge-if">IF: 4.8</span><span class="badge badge-nature">Nature Pub.</span></div>
-</div>
-</div>
-<div class="pub-card reveal reveal-delay-1" data-cat="ieee">
-<div class="pub-num">02</div>
-<div class="pub-content">
-<div class="pub-title">AI-Enabled Adversarial Attacks Resistant Post-Quantum Secure Authentication Protocol for Consumer Applications</div>
-<div class="pub-meta">Prithwi Bera, Sayan Rakshit, Ashok Kumar Das, Mohammad Kamrul Hasan et al. · IEEE Transactions on Consumer Electronics · 2026</div>
-<div class="pub-badges"><span class="badge badge-q1">Q1</span><span class="badge badge-if">IF: 10.2</span><span class="badge badge-ieee">IEEE</span></div>
-</div>
-</div>
-<div class="pub-card reveal reveal-delay-2" data-cat="elsevier">
-<div class="pub-num">03</div>
-<div class="pub-content">
-<div class="pub-title">Smart Grid Cyber-Physical Systems: Components, Vulnerabilities, Mitigations, Opportunities, and Conceptual Framework</div>
-<div class="pub-meta">Mohammad Kamrul Hasan et al. · Energy Reports · Elsevier · 2026</div>
-<div class="pub-badges"><span class="badge badge-q1">Q1</span><span class="badge badge-if">IF: 4.8</span></div>
-</div>
-</div>
-<div class="pub-card reveal" data-cat="elsevier">
-<div class="pub-num">04</div>
-<div class="pub-content">
-<div class="pub-title">Life Cycle of Lithium-ion Battery Recycling: Carbon Capture, Utilization, and Storage — A Review</div>
-<div class="pub-meta">Nabeel Al-Qirim, Mohammad Kamrul Hasan et al. · Energy Strategy Reviews · Elsevier · 2026</div>
-<div class="pub-badges"><span class="badge badge-q1">Q1</span><span class="badge badge-if">IF: 9.9</span></div>
-</div>
-</div>
-<div class="pub-card reveal reveal-delay-1" data-cat="other">
-<div class="pub-num">05</div>
-<div class="pub-content">
-<div class="pub-title">Autonomous Vehicles with Augmented Reality, Internet of Things, and Edge Intelligence</div>
-<div class="pub-meta">Amjed Abbas Ahmed, Aqeel Kamil Kadhim, Mohammad Kamrul Hasan et al. · PLOS ONE · 2025</div>
-<div class="pub-badges"><span class="badge badge-q1">Q1</span><span class="badge badge-if">PLOS</span></div>
-</div>
-</div>
-<div class="pub-card reveal reveal-delay-2" data-cat="ieee">
-<div class="pub-num">06</div>
-<div class="pub-content">
-<div class="pub-title">A Real-Time Monitoring of Communication Protocols in 6G Mobile Network using Intelligent Surface and IoT</div>
-<div class="pub-meta">S.N. AL-Jaradi, Mohammad Kamrul Hasan et al. · IEEE Transactions on Consumer Electronics · 2025</div>
-<div class="pub-badges"><span class="badge badge-q1">Q1</span><span class="badge badge-if">IF: 10.9</span><span class="badge badge-ieee">IEEE</span></div>
-</div>
-</div>
-<div class="pub-card reveal" data-cat="springer">
-<div class="pub-num">07</div>
-<div class="pub-content">
-<div class="pub-title">Data Space Privacy Model with Federated Learning Technique for Securing IoT Communication</div>
-<div class="pub-meta">Taher M. Ghazal, Mohammad Kamrul Hasan et al. · Journal of Intelligent &amp; Robotic Systems · Springer · 2025</div>
-<div class="pub-badges"><span class="badge badge-q1">Q2</span><span class="badge badge-acm">Springer</span></div>
-</div>
-</div>
-<div class="pub-card reveal reveal-delay-1" data-cat="springer">
-<div class="pub-num">08</div>
-<div class="pub-content">
-<div class="pub-title">Review on Honeynet Analysis: Can LSTM and Shot Learning Drive Intelligent Cyber Threat Detection?</div>
-<div class="pub-meta">T.A.M. Tajul Ariffin, S.N.H. Sheikh Abdullah, F. Fauzi, Mohammad Kamrul Hasan et al. · Cluster Computing · Springer · 2025</div>
-<div class="pub-badges"><span class="badge badge-q1">Q1</span><span class="badge badge-acm">Springer</span></div>
-</div>
-</div>
-<div class="pub-card reveal reveal-delay-2" data-cat="springer">
-<div class="pub-num">09</div>
-<div class="pub-content">
-<div class="pub-title">Intelligent Device-to-Device Handover Management Techniques for 5G/6G and Beyond</div>
-<div class="pub-meta">S.M. Topazal, Shayla Islam, R. Kolandaisamy, Mohammad Kamrul Hasan et al. · The Journal of Supercomputing · Springer · 2025</div>
-<div class="pub-badges"><span class="badge badge-q1">Q2</span><span class="badge badge-acm">Springer</span></div>
-</div>
-</div>
-<div class="pub-card reveal" data-cat="springer">
-<div class="pub-num">10</div>
-<div class="pub-content">
-<div class="pub-title">A Comprehensive Survey on 6G-Security: Physical Connection and Service Layers</div>
-<div class="pub-meta">Mamoon M. Saeed, Rashid A. Saeed, Mohammad Kamrul Hasan et al. · Discover Internet of Things · Springer · 2025</div>
-<div class="pub-badges"><span class="badge badge-q1">Q2</span><span class="badge badge-acm">Springer</span></div>
-</div>
-</div>
-<div class="pub-card reveal reveal-delay-1" data-cat="ieee">
-<div class="pub-num">11</div>
-<div class="pub-content">
-<div class="pub-title">Edge Smart Meter Based LSTM Federated Learning with AES Cryptographic Blockchain for Smart Grid AIoT Networks</div>
-<div class="pub-meta">Mohammad Kamrul Hasan et al. · IEEE Communications Standards Magazine · 2025–2026</div>
-<div class="pub-badges"><span class="badge badge-q1">Q1</span><span class="badge badge-if">IF: 6.0</span><span class="badge badge-ieee">IEEE</span></div>
-</div>
-</div>
-<div class="pub-card reveal reveal-delay-2" data-cat="acm">
-<div class="pub-num">12</div>
-<div class="pub-content">
-<div class="pub-title">Multi-Hop and Mesh for LoRa Networks: Recent Advancements, Issues, and Recommended Applications</div>
-<div class="pub-meta">Andrew Wei-Loong Wong, Mohammad Kamrul Hasan, Salmah Fattah · ACM Computing Surveys</div>
-<div class="pub-badges"><span class="badge badge-q1">Q1</span><span class="badge badge-if">IF: 16.6</span><span class="badge badge-acm">ACM</span></div>
-</div>
-</div>
-</div>
-<button class="pub-more-btn reveal" onclick="window.open('https://ukmsarjana.ukm.my/main/lihat_profil/SzAyMzIwOA==','_blank')">
-<svg aria-hidden="true" fill="none" height="14" stroke="currentColor" stroke-width="2" viewbox="0 0 24 24" width="14"><path d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"></path></svg>
-      View All 186 Publications on UKM Profile
-    </button>
-</div>
-</section><section id="grants">
-<div class="section-wrap">
-<span class="section-label reveal">Funding</span>
-<h2 class="section-heading reveal">Research Grants</h2>
-<p class="section-sub reveal">Leading and co-investigating major grants from national and international funding bodies.</p>
-<div class="grants-stats">
-<div class="grants-stat-card reveal">
-<span class="grants-stat-num">MYR 1M+</span>
-<span class="grants-stat-label">Total Funding Secured</span>
-</div>
-<div class="grants-stat-card reveal reveal-delay-1">
-<span class="grants-stat-num">12+</span>
-<span class="grants-stat-label">Projects (Active &amp; Completed)</span>
-</div>
-<div class="grants-stat-card reveal reveal-delay-2">
-<span class="grants-stat-num">6+</span>
-<span class="grants-stat-label">International Collaborations</span>
-</div>
-<div class="grants-stat-card reveal reveal-delay-3">
-<span class="grants-stat-num">PI</span>
-<span class="grants-stat-label">Primary Role on Key Projects</span>
-</div>
-</div>
-<div class="grants-list">
-<div class="grant-item reveal">
-<span class="grant-role pi">PI</span>
-<div>
-<div class="grant-title">GRIDTRUST: Federated AI and Cyber Range Testing for Secure and Explainable Smart Energy Infrastructure</div>
-<div class="grant-meta">ISPF-UK British Council (Under Evaluation) · <span class="grant-amount">£80,000</span></div>
-</div>
-</div>
-<div class="grant-item reveal reveal-delay-1">
-<span class="grant-role pi">PI</span>
-<div>
-<div class="grant-title">Generative-AI and Cryptographic Blockchain based Federated Learning IoT System for Smart Manufacturing</div>
-<div class="grant-meta">Strategic Grant MOSTI 2025 (Under Evaluation) · <span class="grant-amount">MYR 1,600,000</span></div>
-</div>
-</div>
-<div class="grant-item reveal reveal-delay-2">
-<span class="grant-role pi">PI</span>
-<div>
-<div class="grant-title">Develop a National Cybersecurity Labelling Scheme for Digital Products to Help Consumers Identify Secure Devices and Applications</div>
-<div class="grant-meta">FTSM Computer Challenge Grant 2026 · Grand Challenge 2: National Digital Ecosystem Security · Program: Strengthening National Technology Sovereignty Through an Integrated, Citizen-Centred Cybersecurity Ecosystem Aligned with the Malaysia Cyber Security Strategy (MCSS) 2025–2030 · 2026–2028 · <span class="grant-amount">MYR 40,000</span></div>
-</div>
-</div>
-<div class="grant-item reveal">
-<span class="grant-role pi">PI</span>
-<div>
-<div class="grant-title">A Novel Cryptographic Fog-Server Empowered Deep-Federated Advanced Metering Model for Smart Grids</div>
-<div class="grant-meta">DIP-2025-01 · Ministry of Higher Education, Malaysia · 2025–2026 · <span class="grant-amount">MYR 110,000</span></div>
-</div>
-</div>
-<div class="grant-item reveal">
-<span class="grant-role pi">PI</span>
-<div>
-<div class="grant-title">Dynamic Self-Defender End-To-End IoT Security Framework in Smart Grid Network</div>
-<div class="grant-meta">FRGS/1/2019/TK04 · Ministry of Higher Education, Malaysia · 2020–2023 · <span class="grant-amount">MYR 127,650</span> [Completed]</div>
-</div>
-</div>
-<div class="grant-item reveal reveal-delay-1">
-<span class="grant-role copi">Co-PI</span>
-<div>
-<div class="grant-title">TUBITAK-MIGHT: AI-Powered Mitosis Detection in Breast Cancer Histopathology (Turkey–Malaysia)</div>
-<div class="grant-meta">International Grant · 2024–2026 · <span class="grant-amount">MYR 425,426</span></div>
-</div>
-</div>
-<div class="grant-item reveal reveal-delay-2">
-<span class="grant-role pi">PI</span>
-<div>
-<div class="grant-title">A Novel Trustworthy-AI Empowered Security Model for Smart Grid (CDMS Research Grant, Australia)</div>
-<div class="grant-meta">CDMS Australia · Approved July 2025 · <span class="grant-amount">USD 10,000</span></div>
-</div>
-</div>
-</div>
-</div>
-</section><section id="gallery">
+</section>
+<!-- ═══ GALLERY ═══════════════════════════════════════════ -->
+<section id="gallery">
 <div class="section-wrap">
 <span class="section-label reveal">Lab Life</span>
-<h2 class="section-heading reveal">Photo Album</h2>
+<h2 class="section-heading reveal">Photo <em>Album</em></h2>
 <p class="section-sub reveal">Snapshots from the lab, conferences, field visits, and research milestones.</p>
 <div class="lab-banner reveal">
 <div>
@@ -913,13 +642,447 @@
 </div>
 </div>
 </div>
-</section><section id="techstack">
+</section>
+<!-- Lightbox -->
+<div aria-label="Image viewer" aria-modal="true" id="lightbox" role="dialog">
+<button aria-label="Close" class="lightbox-close" id="lbClose">×</button>
+<button aria-label="Previous" class="lightbox-nav lb-prev" id="lbPrev">‹</button>
+<img alt="" id="lbImg" src=""/>
+<button aria-label="Next" class="lightbox-nav lb-next" id="lbNext">›</button>
+<div class="lightbox-caption" id="lbCaption"></div>
+</div>
+<!-- ═══ ONGOING ACTIVITIES ════════════════════════════════ -->
+<section id="activities">
+<div class="section-wrap">
+<span class="section-label reveal">What's Happening</span>
+<h2 class="section-heading reveal">Ongoing <em>Activities</em></h2>
+<p class="section-sub reveal">Active research projects, grant proposals, and current lab pursuits.</p>
+<div class="activities-grid">
+<div class="activity-card reveal spot">
+<div class="activity-header">
+<div class="activity-title">GRIDTRUST — Federated AI for Smart Energy</div>
+<span class="activity-status active">Active</span>
+</div>
+<div class="activity-desc">Developing federated learning + cyber range testing framework for explainable, secure smart energy infrastructure. British Council UK grant under evaluation.</div>
+<div class="activity-progress-wrap">
+<div class="activity-progress-labels"><span>Progress</span><span>65%</span></div>
+<div class="activity-progress-bar"><div class="activity-progress-fill" data-width="65"></div></div>
+</div>
+<div class="activity-tags">
+<span class="tag">Federated Learning</span><span class="tag">Smart Grid</span><span class="tag">UK Collab</span>
+</div>
+</div>
+<div class="activity-card reveal reveal-delay-1 spot">
+<div class="activity-header">
+<div class="activity-title">TUBITAK-MIGHT — AI Breast Cancer Detection</div>
+<span class="activity-status active">Active</span>
+</div>
+<div class="activity-desc">Turkey–Malaysia bilateral grant powering AI-driven mitosis detection in breast cancer histopathology slides using deep learning. MYR 425K project (2024–2026).</div>
+<div class="activity-progress-wrap">
+<div class="activity-progress-labels"><span>Progress</span><span>50%</span></div>
+<div class="activity-progress-bar"><div class="activity-progress-fill" data-width="50"></div></div>
+</div>
+<div class="activity-tags">
+<span class="tag">AI Healthcare</span><span class="tag">Deep Learning</span><span class="tag">Turkey</span>
+</div>
+</div>
+<div class="activity-card reveal reveal-delay-2 spot">
+<div class="activity-header">
+<div class="activity-title">Generative-AI Blockchain IoT for Manufacturing</div>
+<span class="activity-status submitted">Submitted</span>
+</div>
+<div class="activity-desc">Proposed MYR 1.6M MOSTI Strategic Grant for Gen-AI and cryptographic blockchain-based federated learning IoT system for smart manufacturing environments.</div>
+<div class="activity-progress-wrap">
+<div class="activity-progress-labels"><span>Review Stage</span><span>30%</span></div>
+<div class="activity-progress-bar"><div class="activity-progress-fill" data-width="30"></div></div>
+</div>
+<div class="activity-tags">
+<span class="tag">Gen-AI</span><span class="tag">Blockchain</span><span class="tag">Manufacturing</span>
+</div>
+</div>
+<div class="activity-card reveal spot">
+<div class="activity-header">
+<div class="activity-title">6G RIS-Assisted Smart Meter Communication</div>
+<span class="activity-status active">Active</span>
+</div>
+<div class="activity-desc">Real-time monitoring of 6G mobile network communication protocols using reconfigurable intelligent surfaces (RIS) and IoT for advanced metering infrastructure.</div>
+<div class="activity-progress-wrap">
+<div class="activity-progress-labels"><span>Progress</span><span>75%</span></div>
+<div class="activity-progress-bar"><div class="activity-progress-fill" data-width="75"></div></div>
+</div>
+<div class="activity-tags">
+<span class="tag">6G</span><span class="tag">RIS</span><span class="tag">IoT</span>
+</div>
+</div>
+<div class="activity-card reveal reveal-delay-1 spot">
+<div class="activity-header">
+<div class="activity-title">LLM Security &amp; Post-Quantum Auth Protocols</div>
+<span class="activity-status active">Active</span>
+</div>
+<div class="activity-desc">Investigating AI-enabled adversarial-attack-resistant post-quantum authentication protocols for consumer electronics — published IEEE Trans. Consumer Electronics 2026.</div>
+<div class="activity-progress-wrap">
+<div class="activity-progress-labels"><span>Progress</span><span>90%</span></div>
+<div class="activity-progress-bar"><div class="activity-progress-fill" data-width="90"></div></div>
+</div>
+<div class="activity-tags">
+<span class="tag">Post-Quantum</span><span class="tag">LLM</span><span class="tag">Security</span>
+</div>
+</div>
+<div class="activity-card reveal reveal-delay-2 spot">
+<div class="activity-header">
+<div class="activity-title">PhD Student Supervision — 2025 Cohort</div>
+<span class="activity-status review">Ongoing</span>
+</div>
+<div class="activity-desc">Actively supervising multiple PhD and MSc candidates in cybersecurity, AI/ML for networks, IoT security, and smart grid topics. Open to new co-supervision proposals.</div>
+<div class="activity-progress-wrap">
+<div class="activity-progress-labels"><span>Capacity</span><span>Active</span></div>
+<div class="activity-progress-bar"><div class="activity-progress-fill" data-width="60"></div></div>
+</div>
+<div class="activity-tags">
+<span class="tag">PhD</span><span class="tag">MSc</span><span class="tag">Supervision</span>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- ═══ RESEARCH AREAS ════════════════════════════════════ -->
+<section id="research">
+<div class="section-wrap">
+<span class="section-label reveal">Expertise</span>
+<h2 class="section-heading reveal">Research <em>Areas</em></h2>
+<p class="section-sub reveal">Advancing security and intelligence across critical infrastructure, wireless networks, and AI systems.</p>
+<div class="research-grid">
+<div class="research-card reveal spot">
+<span class="research-index">No. 01</span>
+<h3>Cybersecurity &amp; Smart Grid</h3>
+<p>Comprehensive cyber-physical security frameworks protecting smart grid infrastructure from advanced persistent threats and zero-day exploits.</p>
+<div class="research-tags"><span class="tag">Smart Grid</span><span class="tag">ICS Security</span><span class="tag">SCADA</span></div>
+</div>
+<div class="research-card reveal reveal-delay-1 spot">
+<span class="research-index">No. 02</span>
+<h3>AI &amp; Federated Learning</h3>
+<p>Privacy-preserving distributed machine learning for IoT and industrial networks, combining federated learning with blockchain cryptography.</p>
+<div class="research-tags"><span class="tag">Federated Learning</span><span class="tag">Deep Learning</span><span class="tag">LLM</span></div>
+</div>
+<div class="research-card reveal reveal-delay-2 spot">
+<span class="research-index">No. 03</span>
+<h3>5G/6G Network Security</h3>
+<p>Resource allocation, interference mitigation, and handover optimization with security-first architecture for next-generation mobile networks.</p>
+<div class="research-tags"><span class="tag">5G/6G</span><span class="tag">LTE-A</span><span class="tag">RIS</span></div>
+</div>
+<div class="research-card reveal spot">
+<span class="research-index">No. 04</span>
+<h3>IoMT &amp; Healthcare Security</h3>
+<p>Secure protocols and lightweight authentication for Internet of Medical Things devices, protecting patient privacy in telehealth systems.</p>
+<div class="research-tags"><span class="tag">IoMT</span><span class="tag">Healthcare</span><span class="tag">Privacy</span></div>
+</div>
+<div class="research-card reveal reveal-delay-1 spot">
+<span class="research-index">No. 05</span>
+<h3>Blockchain &amp; Cryptography</h3>
+<p>AES cryptographic blockchain systems and quantum-resistant post-quantum protocols for securing industrial data and supply chain integrity.</p>
+<div class="research-tags"><span class="tag">Blockchain</span><span class="tag">Post-Quantum</span><span class="tag">AES</span></div>
+</div>
+<div class="research-card reveal reveal-delay-2 spot">
+<span class="research-index">No. 06</span>
+<h3>IoT &amp; Industrial Networks</h3>
+<p>End-to-end IoT security frameworks for smart manufacturing, warehouse management, and Industry 4.0 ecosystem integration.</p>
+<div class="research-tags"><span class="tag">IoT</span><span class="tag">Industry 4.0</span><span class="tag">AIoT</span></div>
+</div>
+</div>
+</div>
+</section>
+<!-- ═══ AWARDS ════════════════════════════════════════════ -->
+<section id="awards">
+<div class="section-wrap">
+<span class="section-label reveal">Recognition</span>
+<h2 class="section-heading reveal">Awards, Patents &amp; <em>Honours</em></h2>
+<p class="section-sub reveal">Global recognition in research excellence, intellectual property, and citation impact.</p>
+<!-- Germany Patent -->
+<div class="patent-card reveal spot">
+<div aria-hidden="true" class="patent-flag">
+<span style="background:#000"></span>
+<span style="background:#D00"></span>
+<span style="background:#FFCE00"></span>
+</div>
+<div class="patent-badge">Utility Patent · Germany</div>
+<div class="patent-meta">
+<div>
+<div class="patent-label">Deutsches Patent- und Markenamt (DPMA)</div>
+<div class="patent-year">2025</div>
+</div>
+</div>
+<div class="patent-title">Deep-Federated Advanced Metering System for Optimizing Data Security in Smart Grids</div>
+<div class="patent-desc">A utility patent granted by the German Patent and Trade Mark Office (DPMA) for a novel deep federated learning architecture enabling privacy-preserving, secure data communication in advanced metering infrastructure within smart grid networks.</div>
+<div class="patent-tags">
+<span class="patent-tag">Federated Learning</span>
+<span class="patent-tag">Smart Grid Security</span>
+<span class="patent-tag">AMI Systems</span>
+<span class="patent-tag">Data Privacy</span>
+</div>
+</div>
+<div class="awards-grid">
+<div class="award-card reveal spot">
+<div>
+<div class="award-year">2021 – 2026</div>
+<div class="award-title">Top 2% Scientist in the World</div>
+<div class="award-org">Stanford University &amp; Elsevier</div>
+</div>
+</div>
+<div class="award-card reveal reveal-delay-1 spot">
+<div>
+<div class="award-year">2022 – 2026</div>
+<div class="award-title">Top 1% Journal Publications</div>
+<div class="award-org">Web of Science / Clarivate Analytics</div>
+</div>
+</div>
+<div class="award-card reveal reveal-delay-2 spot">
+<div>
+<div class="award-year">2023 – 2025</div>
+<div class="award-title">Highly Cited Author Award</div>
+<div class="award-org">Universiti Kebangsaan Malaysia</div>
+</div>
+</div>
+<div class="award-card reveal reveal-delay-3 spot">
+<div>
+<div class="award-year">2023 – 2025</div>
+<div class="award-title">Research Excellence Award</div>
+<div class="award-org">MyRA (Malaysia Research Assessment), UKM</div>
+</div>
+</div>
+<div class="award-card reveal spot">
+<div>
+<div class="award-year">IEEE 2022</div>
+<div class="award-title">Best Paper Award — AI in Cybersecurity</div>
+<div class="award-org">2nd Int'l Conference on AI in Cybersecurity (ICAIC), Texas, USA</div>
+</div>
+</div>
+<div class="award-card reveal reveal-delay-1 spot">
+<div>
+<div class="award-year">2018</div>
+<div class="award-title">Best Paper Award — InTEX18</div>
+<div class="award-org">UNIMAS Innovation &amp; Technology Exposition, Kuching</div>
+</div>
+</div>
+<div class="award-card reveal reveal-delay-2 spot">
+<div>
+<div class="award-year">2016</div>
+<div class="award-title">Young Scientist Award</div>
+<div class="award-org">ICGCET'16, Aalborg University, Denmark</div>
+</div>
+</div>
+<div class="award-card reveal reveal-delay-3 spot">
+<div>
+<div class="award-year">2013 – 2016</div>
+<div class="award-title">PhD International Scholarship (MIS)</div>
+<div class="award-org">Ministry of Higher Education, Malaysia</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- ═══ PUBLICATIONS ══════════════════════════════════════ -->
+<section id="publications">
+<div class="section-wrap">
+<span class="section-label reveal">Impact</span>
+<h2 class="section-heading reveal">Selected <em>Publications</em></h2>
+<p class="section-sub reveal">High-impact publications in Q1 journals — IEEE, Nature, Elsevier, ACM, and Springer.</p>
+<div class="pub-filters reveal">
+<button class="filter-btn active" onclick="filterPubs('all',this)">All</button>
+<button class="filter-btn" onclick="filterPubs('ieee',this)">IEEE</button>
+<button class="filter-btn" onclick="filterPubs('nature',this)">Nature</button>
+<button class="filter-btn" onclick="filterPubs('elsevier',this)">Elsevier</button>
+<button class="filter-btn" onclick="filterPubs('acm',this)">ACM</button>
+<button class="filter-btn" onclick="filterPubs('springer',this)">Springer</button>
+</div>
+<div class="pub-list" id="pubList">
+<div class="pub-card reveal spot" data-cat="nature">
+<div class="pub-num">01</div>
+<div class="pub-content">
+<div class="pub-title">A Dual-Branch Graph Neural Network Architecture for Drug-Target Binding Affinity Prediction</div>
+<div class="pub-meta">Khushnood Abbas, Chen Hao, Mohammad Kamrul Hasan et al. · Scientific Reports · 2026</div>
+<div class="pub-badges"><span class="badge badge-q1">Q1</span><span class="badge badge-if">IF: 4.8</span><span class="badge badge-nature">Nature Pub.</span></div>
+</div>
+</div>
+<div class="pub-card reveal reveal-delay-1 spot" data-cat="ieee">
+<div class="pub-num">02</div>
+<div class="pub-content">
+<div class="pub-title">AI-Enabled Adversarial Attacks Resistant Post-Quantum Secure Authentication Protocol for Consumer Applications</div>
+<div class="pub-meta">Prithwi Bera, Sayan Rakshit, Ashok Kumar Das, Mohammad Kamrul Hasan et al. · IEEE Transactions on Consumer Electronics · 2026</div>
+<div class="pub-badges"><span class="badge badge-q1">Q1</span><span class="badge badge-if">IF: 10.2</span><span class="badge badge-ieee">IEEE</span></div>
+</div>
+</div>
+<div class="pub-card reveal reveal-delay-2 spot" data-cat="elsevier">
+<div class="pub-num">03</div>
+<div class="pub-content">
+<div class="pub-title">Smart Grid Cyber-Physical Systems: Components, Vulnerabilities, Mitigations, Opportunities, and Conceptual Framework</div>
+<div class="pub-meta">Mohammad Kamrul Hasan et al. · Energy Reports · Elsevier · 2026</div>
+<div class="pub-badges"><span class="badge badge-q1">Q1</span><span class="badge badge-if">IF: 4.8</span></div>
+</div>
+</div>
+<div class="pub-card reveal spot" data-cat="elsevier">
+<div class="pub-num">04</div>
+<div class="pub-content">
+<div class="pub-title">Life Cycle of Lithium-ion Battery Recycling: Carbon Capture, Utilization, and Storage — A Review</div>
+<div class="pub-meta">Nabeel Al-Qirim, Mohammad Kamrul Hasan et al. · Energy Strategy Reviews · Elsevier · 2026</div>
+<div class="pub-badges"><span class="badge badge-q1">Q1</span><span class="badge badge-if">IF: 9.9</span></div>
+</div>
+</div>
+<div class="pub-card reveal reveal-delay-1 spot" data-cat="other">
+<div class="pub-num">05</div>
+<div class="pub-content">
+<div class="pub-title">Autonomous Vehicles with Augmented Reality, Internet of Things, and Edge Intelligence</div>
+<div class="pub-meta">Amjed Abbas Ahmed, Aqeel Kamil Kadhim, Mohammad Kamrul Hasan et al. · PLOS ONE · 2025</div>
+<div class="pub-badges"><span class="badge badge-q1">Q1</span><span class="badge badge-if">PLOS</span></div>
+</div>
+</div>
+<div class="pub-card reveal reveal-delay-2 spot" data-cat="ieee">
+<div class="pub-num">06</div>
+<div class="pub-content">
+<div class="pub-title">A Real-Time Monitoring of Communication Protocols in 6G Mobile Network using Intelligent Surface and IoT</div>
+<div class="pub-meta">S.N. AL-Jaradi, Mohammad Kamrul Hasan et al. · IEEE Transactions on Consumer Electronics · 2025</div>
+<div class="pub-badges"><span class="badge badge-q1">Q1</span><span class="badge badge-if">IF: 10.9</span><span class="badge badge-ieee">IEEE</span></div>
+</div>
+</div>
+<div class="pub-card reveal spot" data-cat="springer">
+<div class="pub-num">07</div>
+<div class="pub-content">
+<div class="pub-title">Data Space Privacy Model with Federated Learning Technique for Securing IoT Communication</div>
+<div class="pub-meta">Taher M. Ghazal, Mohammad Kamrul Hasan et al. · Journal of Intelligent &amp; Robotic Systems · Springer · 2025</div>
+<div class="pub-badges"><span class="badge badge-q1">Q2</span><span class="badge badge-acm">Springer</span></div>
+</div>
+</div>
+<div class="pub-card reveal reveal-delay-1 spot" data-cat="springer">
+<div class="pub-num">08</div>
+<div class="pub-content">
+<div class="pub-title">Review on Honeynet Analysis: Can LSTM and Shot Learning Drive Intelligent Cyber Threat Detection?</div>
+<div class="pub-meta">T.A.M. Tajul Ariffin, S.N.H. Sheikh Abdullah, F. Fauzi, Mohammad Kamrul Hasan et al. · Cluster Computing · Springer · 2025</div>
+<div class="pub-badges"><span class="badge badge-q1">Q1</span><span class="badge badge-acm">Springer</span></div>
+</div>
+</div>
+<div class="pub-card reveal reveal-delay-2 spot" data-cat="springer">
+<div class="pub-num">09</div>
+<div class="pub-content">
+<div class="pub-title">Intelligent Device-to-Device Handover Management Techniques for 5G/6G and Beyond</div>
+<div class="pub-meta">S.M. Topazal, Shayla Islam, R. Kolandaisamy, Mohammad Kamrul Hasan et al. · The Journal of Supercomputing · Springer · 2025</div>
+<div class="pub-badges"><span class="badge badge-q1">Q2</span><span class="badge badge-acm">Springer</span></div>
+</div>
+</div>
+<div class="pub-card reveal spot" data-cat="springer">
+<div class="pub-num">10</div>
+<div class="pub-content">
+<div class="pub-title">A Comprehensive Survey on 6G-Security: Physical Connection and Service Layers</div>
+<div class="pub-meta">Mamoon M. Saeed, Rashid A. Saeed, Mohammad Kamrul Hasan et al. · Discover Internet of Things · Springer · 2025</div>
+<div class="pub-badges"><span class="badge badge-q1">Q2</span><span class="badge badge-acm">Springer</span></div>
+</div>
+</div>
+<div class="pub-card reveal reveal-delay-1 spot" data-cat="ieee">
+<div class="pub-num">11</div>
+<div class="pub-content">
+<div class="pub-title">Edge Smart Meter Based LSTM Federated Learning with AES Cryptographic Blockchain for Smart Grid AIoT Networks</div>
+<div class="pub-meta">Mohammad Kamrul Hasan et al. · IEEE Communications Standards Magazine · 2025–2026</div>
+<div class="pub-badges"><span class="badge badge-q1">Q1</span><span class="badge badge-if">IF: 6.0</span><span class="badge badge-ieee">IEEE</span></div>
+</div>
+</div>
+<div class="pub-card reveal reveal-delay-2 spot" data-cat="acm">
+<div class="pub-num">12</div>
+<div class="pub-content">
+<div class="pub-title">Multi-Hop and Mesh for LoRa Networks: Recent Advancements, Issues, and Recommended Applications</div>
+<div class="pub-meta">Andrew Wei-Loong Wong, Mohammad Kamrul Hasan, Salmah Fattah · ACM Computing Surveys</div>
+<div class="pub-badges"><span class="badge badge-q1">Q1</span><span class="badge badge-if">IF: 16.6</span><span class="badge badge-acm">ACM</span></div>
+</div>
+</div>
+</div>
+<button class="pub-more-btn reveal" onclick="window.open('https://ukmsarjana.ukm.my/main/lihat_profil/SzAyMzIwOA==','_blank')">
+<svg aria-hidden="true" fill="none" height="14" stroke="currentColor" stroke-width="2" viewbox="0 0 24 24" width="14"><path d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"></path></svg>
+      View All 186 Publications on UKM Profile
+    </button>
+</div>
+</section>
+<!-- ═══ GRANTS ════════════════════════════════════════════ -->
+<section id="grants">
+<div class="section-wrap">
+<span class="section-label reveal">Funding</span>
+<h2 class="section-heading reveal">Research <em>Grants</em></h2>
+<p class="section-sub reveal">Leading and co-investigating major grants from national and international funding bodies.</p>
+<div class="grants-stats">
+<div class="grants-stat-card reveal spot">
+<span class="grants-stat-num">MYR 1M+</span>
+<span class="grants-stat-label">Total Funding Secured</span>
+</div>
+<div class="grants-stat-card reveal reveal-delay-1 spot">
+<span class="grants-stat-num">12+</span>
+<span class="grants-stat-label">Projects (Active &amp; Completed)</span>
+</div>
+<div class="grants-stat-card reveal reveal-delay-2 spot">
+<span class="grants-stat-num">6+</span>
+<span class="grants-stat-label">International Collaborations</span>
+</div>
+<div class="grants-stat-card reveal reveal-delay-3 spot">
+<span class="grants-stat-num">PI</span>
+<span class="grants-stat-label">Primary Role on Key Projects</span>
+</div>
+</div>
+<div class="grants-list">
+<div class="grant-item reveal spot">
+<span class="grant-role pi">PI</span>
+<div>
+<div class="grant-title">GRIDTRUST: Federated AI and Cyber Range Testing for Secure and Explainable Smart Energy Infrastructure</div>
+<div class="grant-meta">ISPF-UK British Council (Under Evaluation) · <span class="grant-amount">£80,000</span></div>
+</div>
+</div>
+<div class="grant-item reveal reveal-delay-1 spot">
+<span class="grant-role pi">PI</span>
+<div>
+<div class="grant-title">Generative-AI and Cryptographic Blockchain based Federated Learning IoT System for Smart Manufacturing</div>
+<div class="grant-meta">Strategic Grant MOSTI 2025 (Under Evaluation) · <span class="grant-amount">MYR 1,600,000</span></div>
+</div>
+</div>
+<div class="grant-item reveal reveal-delay-2 spot">
+<span class="grant-role pi">PI</span>
+<div>
+<div class="grant-title">Develop a National Cybersecurity Labelling Scheme for Digital Products to Help Consumers Identify Secure Devices and Applications</div>
+<div class="grant-meta">FTSM Computer Challenge Grant 2026 · Grand Challenge 2: National Digital Ecosystem Security · Program: Strengthening National Technology Sovereignty Through an Integrated, Citizen-Centred Cybersecurity Ecosystem Aligned with the Malaysia Cyber Security Strategy (MCSS) 2025–2030 · 2026–2028 · <span class="grant-amount">MYR 40,000</span></div>
+</div>
+</div>
+<div class="grant-item reveal spot">
+<span class="grant-role pi">PI</span>
+<div>
+<div class="grant-title">A Novel Cryptographic Fog-Server Empowered Deep-Federated Advanced Metering Model for Smart Grids</div>
+<div class="grant-meta">DIP-2025-01 · Ministry of Higher Education, Malaysia · 2025–2026 · <span class="grant-amount">MYR 110,000</span></div>
+</div>
+</div>
+<div class="grant-item reveal spot">
+<span class="grant-role pi">PI</span>
+<div>
+<div class="grant-title">Dynamic Self-Defender End-To-End IoT Security Framework in Smart Grid Network</div>
+<div class="grant-meta">FRGS/1/2019/TK04 · Ministry of Higher Education, Malaysia · 2020–2023 · <span class="grant-amount">MYR 127,650</span> [Completed]</div>
+</div>
+</div>
+<div class="grant-item reveal reveal-delay-1 spot">
+<span class="grant-role copi">Co-PI</span>
+<div>
+<div class="grant-title">TUBITAK-MIGHT: AI-Powered Mitosis Detection in Breast Cancer Histopathology (Turkey–Malaysia)</div>
+<div class="grant-meta">International Grant · 2024–2026 · <span class="grant-amount">MYR 425,426</span></div>
+</div>
+</div>
+<div class="grant-item reveal reveal-delay-2 spot">
+<span class="grant-role pi">PI</span>
+<div>
+<div class="grant-title">A Novel Trustworthy-AI Empowered Security Model for Smart Grid (CDMS Research Grant, Australia)</div>
+<div class="grant-meta">CDMS Australia · Approved July 2025 · <span class="grant-amount">USD 10,000</span></div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- ═══ TECH STACK ════════════════════════════════════════ -->
+<section id="techstack">
 <div class="section-wrap">
 <span class="section-label reveal">Tools &amp; Technologies</span>
-<h2 class="section-heading reveal">Technical Expertise</h2>
+<h2 class="section-heading reveal">Technical <em>Expertise</em></h2>
 <p class="section-sub reveal">Spanning security tools, AI frameworks, network simulation, and hardware platforms.</p>
 <div class="tech-categories">
-<div class="tech-group reveal">
+<div class="tech-group reveal spot">
 <div class="tech-group-title">Security &amp; Pentesting</div>
 <div class="tech-pills">
 <span class="tech-pill">Metasploit</span><span class="tech-pill">OWASP ZAP</span>
@@ -930,7 +1093,7 @@
 <span class="tech-pill">Kali Linux</span>
 </div>
 </div>
-<div class="tech-group reveal reveal-delay-1">
+<div class="tech-group reveal reveal-delay-1 spot">
 <div class="tech-group-title">AI &amp; Programming</div>
 <div class="tech-pills">
 <span class="tech-pill">Python</span><span class="tech-pill">Google Colab</span>
@@ -939,7 +1102,7 @@
 <span class="tech-pill">Simulink</span>
 </div>
 </div>
-<div class="tech-group reveal reveal-delay-2">
+<div class="tech-group reveal reveal-delay-2 spot">
 <div class="tech-group-title">Networks &amp; Hardware</div>
 <div class="tech-pills">
 <span class="tech-pill">NS2/NS3</span><span class="tech-pill">OPNET</span>
@@ -950,13 +1113,15 @@
 </div>
 </div>
 </div>
-</section><section id="contact">
+</section>
+<!-- ═══ CONTACT ════════════════════════════════════════════ -->
+<section id="contact">
 <div class="section-wrap">
 <span class="section-label reveal">Connect</span>
-<h2 class="section-heading reveal">Get In Touch</h2>
+<h2 class="section-heading reveal">Get In <em>Touch</em></h2>
 <p class="section-sub reveal">Open to research collaborations, speaking invitations, and postgraduate supervision opportunities.</p>
 <div class="contact-grid">
-<div class="contact-info reveal">
+<div class="contact-info reveal spot">
 <div class="contact-item">
 <div class="contact-icon"><svg aria-hidden="true" fill="none" height="15" stroke="currentColor" stroke-width="1.8" viewbox="0 0 24 24" width="15"><path d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path></svg></div>
 <div>
@@ -986,7 +1151,7 @@
 </div>
 </div>
 </div>
-<form class="contact-form reveal reveal-delay-2" id="contactForm" onsubmit="handleSubmit(event)">
+<form class="contact-form reveal reveal-delay-2 spot" id="contactForm" onsubmit="handleSubmit(event)">
 <div class="form-group">
 <label for="name">Your Name</label>
 <input autocomplete="name" id="name" name="name" placeholder="Prof. Jane Smith" required="" type="text"/>
@@ -1008,6 +1173,7 @@
 </div>
 </div>
 </section>
+<!-- Footer -->
 <footer>
 <div class="footer-inner">
 <p class="footer-copy">© 2026 <span>Dr. Mohammad Kamrul Hasan</span> · Universiti Kebangsaan Malaysia</p>
@@ -1020,15 +1186,6 @@
 </ul>
 </div>
 </footer>
-</main>
-</div>
-<div aria-label="Image viewer" aria-modal="true" id="lightbox" role="dialog">
-<button aria-label="Close" class="lightbox-close" id="lbClose">×</button>
-<button aria-label="Previous" class="lightbox-nav lb-prev" id="lbPrev">‹</button>
-<img alt="" id="lbImg" src=""/>
-<button aria-label="Next" class="lightbox-nav lb-next" id="lbNext">›</button>
-<div class="lightbox-caption" id="lbCaption"></div>
-</div>
 <script>
 /* ── Scroll: back-to-top + nav scroll class ── */
 window.addEventListener('scroll', () => {
@@ -1165,13 +1322,131 @@ function handleSubmit(e) {
 }
 </script>
 <script>
-/* Scrollspy for the sidebar navigation */
+/* ===== Glossy redesign: motion & interaction layer ===== */
 (function(){
-  const links=[...document.querySelectorAll('#navLinks a')];
-  const map=new Map(links.map(a=>[a.getAttribute('href').slice(1),a]));
-  const spy=new IntersectionObserver(es=>{es.forEach(e=>{if(e.isIntersecting){links.forEach(l=>l.classList.remove('current'));const a=map.get(e.target.id);if(a)a.classList.add('current');}})},{rootMargin:'-35% 0px -60% 0px'});
-  document.querySelectorAll('main section[id]').forEach(s=>spy.observe(s));
+  const reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
+  const fine = matchMedia('(pointer: fine)').matches;
+
+  /* Counters with thousands separators (overrides the base counter) */
+  window.animateCounter = function(el){
+    if (el.dataset.done) return; el.dataset.done = '1';
+    const target = parseFloat(el.dataset.target), suffix = el.dataset.suffix || '';
+    const fmt = n => Math.floor(n).toLocaleString('en-US') + suffix;
+    if (reduce) { el.textContent = fmt(target); return; }
+    const dur = 1800, t0 = performance.now();
+    (function step(now){ const p = Math.min((now - t0)/dur, 1), e = 1 - Math.pow(1-p, 4);
+      el.textContent = fmt(e*target); if (p < 1) requestAnimationFrame(step); })(t0);
+  };
+  const cio = new IntersectionObserver(es => es.forEach(e => { if (e.isIntersecting){ animateCounter(e.target); cio.unobserve(e.target);} }), {threshold:.4});
+  document.querySelectorAll('.metric .counter').forEach(el => cio.observe(el));
+
+  /* Scroll: progress bar, nav state, timeline fill */
+  const bar = document.getElementById('progress'), nav = document.getElementById('navbar');
+  const tl = document.querySelector('.timeline');
+  function onScroll(){
+    const h = document.documentElement, max = h.scrollHeight - h.clientHeight;
+    bar.style.transform = `scaleX(${max > 0 ? h.scrollTop/max : 0})`;
+    nav.classList.toggle('scrolled', h.scrollTop > 40);
+    if (tl){ const r = tl.getBoundingClientRect(), vh = innerHeight;
+      const f = Math.max(0, Math.min(1, (vh*0.6 - r.top) / r.height)); tl.style.setProperty('--fill', (f*100).toFixed(1)); }
+  }
+  addEventListener('scroll', onScroll, {passive:true}); onScroll();
+
+  /* Scrollspy */
+  const links = [...document.querySelectorAll('#navLinks a[href^="#"]')];
+  const map = new Map(links.map(a => [a.getAttribute('href').slice(1), a]));
+  const spy = new IntersectionObserver(es => es.forEach(e => { if (e.isIntersecting){ links.forEach(l => l.classList.remove('current')); const a = map.get(e.target.id); if (a && !a.classList.contains('nav-cta')) a.classList.add('current'); } }), {rootMargin:'-40% 0px -55% 0px'});
+  document.querySelectorAll('section[id]').forEach(s => spy.observe(s));
+
+  /* Cursor glow + card spotlight + 3D tilt */
+  const glow = document.getElementById('cursorGlow');
+  if (fine && !reduce){
+    addEventListener('pointermove', e => { glow.style.left = e.clientX + 'px'; glow.style.top = e.clientY + 'px'; }, {passive:true});
+    document.querySelectorAll('.spot').forEach(card => {
+      const tilt = card.matches('.research-card,.award-card,.activity-card,.grants-stat-card,.tech-group,.edu-card');
+      card.addEventListener('pointermove', e => {
+        const r = card.getBoundingClientRect(), x = e.clientX - r.left, y = e.clientY - r.top;
+        card.style.setProperty('--mx', x + 'px'); card.style.setProperty('--my', y + 'px');
+        if (tilt){ const rx = ((y / r.height) - .5) * -7, ry = ((x / r.width) - .5) * 7;
+          card.style.transform = `perspective(900px) rotateX(${rx}deg) rotateY(${ry}deg) translateY(-4px)`; }
+      });
+      card.addEventListener('pointerleave', () => { card.style.transform = ''; });
+    });
+    /* Magnetic primary buttons */
+    document.querySelectorAll('.btn-primary,.btn-outline,.btn-glass').forEach(b => {
+      b.addEventListener('pointermove', e => { const r = b.getBoundingClientRect();
+        b.style.transform = `translate(${(e.clientX - r.left - r.width/2)*.18}px,${(e.clientY - r.top - r.height/2)*.25}px)`; });
+      b.addEventListener('pointerleave', () => b.style.transform = '');
+    });
+  } else if (glow) glow.style.display = 'none';
+
+  /* Typed research focus */
+  const tw = document.querySelector('.hero-typed .tw');
+  if (tw){
+    const words = JSON.parse(tw.dataset.words); let wi = 0, ci = 0, del = false;
+    if (reduce){ tw.textContent = words[0]; }
+    else (function type(){
+      const w = words[wi]; tw.textContent = w.slice(0, ci);
+      if (!del && ci < w.length){ ci++; setTimeout(type, 55); }
+      else if (!del){ del = true; setTimeout(type, 1800); }
+      else if (ci > 0){ ci--; setTimeout(type, 28); }
+      else { del = false; wi = (wi + 1) % words.length; setTimeout(type, 300); }
+    })();
+  }
+
+  /* Hero: animated federated-learning network */
+  const cv = document.getElementById('heroNet');
+  if (cv && !reduce){
+    const ctx = cv.getContext('2d'); let W, H, dpr, nodes = [], pulses = [], running = true;
+    const server = {x:0, y:0, r:5};
+    function size(){ dpr = Math.min(devicePixelRatio || 1, 2); W = cv.clientWidth; H = cv.clientHeight;
+      cv.width = W*dpr; cv.height = H*dpr; ctx.setTransform(dpr,0,0,dpr,0,0);
+      server.x = W*0.68; server.y = H*0.45;
+      const n = Math.round(Math.min(90, W*H/16000));
+      nodes = Array.from({length:n}, () => ({x:Math.random()*W, y:Math.random()*H, vx:(Math.random()-.5)*.35, vy:(Math.random()-.5)*.35, r:Math.random()*1.8+1, c:Math.random()<.18}));
+    }
+    size(); addEventListener('resize', size);
+    new IntersectionObserver(es => { running = es[0].isIntersecting; if (running) requestAnimationFrame(draw); }).observe(cv);
+    let last = 0;
+    function draw(t){
+      if (!running) return;
+      ctx.clearRect(0,0,W,H);
+      for (const p of nodes){ p.x += p.vx; p.y += p.vy; if (p.x<0||p.x>W) p.vx*=-1; if (p.y<0||p.y>H) p.vy*=-1; }
+      for (let i=0;i<nodes.length;i++){ const a = nodes[i];
+        for (let j=i+1;j<nodes.length;j++){ const b = nodes[j], dx=a.x-b.x, dy=a.y-b.y, d=dx*dx+dy*dy;
+          if (d < 16000){ ctx.strokeStyle = `rgba(140,170,255,${(1-d/16000)*.22})`; ctx.lineWidth = 1; ctx.beginPath(); ctx.moveTo(a.x,a.y); ctx.lineTo(b.x,b.y); ctx.stroke(); } }
+        if (a.c){ ctx.strokeStyle = 'rgba(243,197,107,.07)'; ctx.beginPath(); ctx.moveTo(a.x,a.y); ctx.lineTo(server.x,server.y); ctx.stroke(); }
+      }
+      // client → server model updates
+      if (t - last > 260){ last = t; const cs = nodes.filter(n=>n.c); if (cs.length){ const s = cs[Math.floor(Math.random()*cs.length)]; pulses.push({s, k:0, back:Math.random()<.35}); } }
+      pulses = pulses.filter(p => p.k <= 1);
+      for (const p of pulses){ p.k += .012; const k = p.back ? 1-p.k : p.k;
+        const x = p.s.x + (server.x-p.s.x)*k, y = p.s.y + (server.y-p.s.y)*k;
+        const g = ctx.createRadialGradient(x,y,0,x,y,8); g.addColorStop(0, p.back?'rgba(94,225,255,.95)':'rgba(255,214,140,.95)'); g.addColorStop(1,'rgba(0,0,0,0)');
+        ctx.fillStyle = g; ctx.beginPath(); ctx.arc(x,y,8,0,7); ctx.fill(); }
+      for (const p of nodes){ ctx.fillStyle = p.c ? 'rgba(255,214,140,.9)' : 'rgba(170,190,255,.6)'; ctx.beginPath(); ctx.arc(p.x,p.y,p.c?p.r+1:p.r,0,7); ctx.fill(); }
+      const pr = 10 + Math.sin(t/500)*3; const sg = ctx.createRadialGradient(server.x,server.y,0,server.x,server.y,pr*4);
+      sg.addColorStop(0,'rgba(255,220,150,.9)'); sg.addColorStop(.3,'rgba(243,197,107,.35)'); sg.addColorStop(1,'rgba(0,0,0,0)');
+      ctx.fillStyle = sg; ctx.beginPath(); ctx.arc(server.x,server.y,pr*4,0,7); ctx.fill();
+      requestAnimationFrame(draw);
+    }
+    requestAnimationFrame(draw);
+  }
+
+  /* Contact form: actually deliver messages by email */
+  window.handleSubmit = function(e){
+    e.preventDefault();
+    const f = e.target, btn = document.getElementById('submitBtn'), data = {};
+    new FormData(f).forEach((v,k) => data[k] = v);
+    data._subject = 'Website enquiry: ' + (data.subject || ''); data._template = 'table'; data._captcha = 'false';
+    btn.disabled = true; btn.textContent = 'Sending…';
+    fetch('https://formsubmit.co/ajax/mkhasan@ukm.edu.my', {method:'POST', headers:{'Content-Type':'application/json', Accept:'application/json'}, body:JSON.stringify(data)})
+      .then(r => r.ok ? 'Message sent ✓' : 'Please email me directly')
+      .catch(() => 'Please email me directly')
+      .then(msg => { btn.textContent = msg; if (msg.includes('✓')) f.reset(); setTimeout(() => { btn.disabled = false; btn.textContent = 'Send Message'; }, 4000); });
+  };
 })();
+
 </script>
 <script data-goatcounter="https://kamrul-ukm.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
 </body>
